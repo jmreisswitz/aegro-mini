@@ -10,7 +10,7 @@ public class AddFarmUseCase {
         this.farmRepository = farmRepository;
     }
 
-    public void execute(Farm farm){
-        this.farmRepository.save(farm);
+    public Farm execute(Farm farm){
+        return this.farmRepository.save(farm);
     }
 }
