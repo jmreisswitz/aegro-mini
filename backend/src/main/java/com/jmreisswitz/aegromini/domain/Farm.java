@@ -3,10 +3,11 @@ package com.jmreisswitz.aegromini.domain;
 import lombok.Data;
 import lombok.NonNull;
 
-import java.util.Set;
+import java.io.Serializable;
+import java.util.HashMap;
 
 @Data
-public class Farm {
+public class Farm implements Serializable {
     @NonNull String id;
-    @NonNull private Set<Field> productions;
+    @NonNull private HashMap<String, Field> fields;
 }
