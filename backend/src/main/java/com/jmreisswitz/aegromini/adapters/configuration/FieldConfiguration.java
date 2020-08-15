@@ -9,6 +9,7 @@ import com.jmreisswitz.aegromini.adapters.persistence.repository.FieldRepository
 import com.jmreisswitz.aegromini.domain.Field;
 import com.jmreisswitz.aegromini.ports.repository.FieldRepository;
 import com.jmreisswitz.aegromini.usecases.field.AddFieldUseCase;
+import com.jmreisswitz.aegromini.usecases.field.GetFieldByIdUseCase;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -37,5 +38,8 @@ public class FieldConfiguration {
     AddFieldUseCase createAddFieldUseCase() {
         return new AddFieldUseCase(createFieldRepository());
     }
+
+    @Bean
+    GetFieldByIdUseCase createGetFieldByIdUseCase() { return new GetFieldByIdUseCase(createFieldRepository()); }
 
 }
