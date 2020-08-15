@@ -5,9 +5,9 @@ import com.jmreisswitz.aegromini.adapters.persistence.converters.FarmRepositoryC
 import com.jmreisswitz.aegromini.adapters.persistence.repository.FarmMongoRepository;
 import com.jmreisswitz.aegromini.adapters.persistence.repository.FarmRepositoryImpl;
 import com.jmreisswitz.aegromini.ports.repository.FarmRepository;
-import com.jmreisswitz.aegromini.usecases.AddFarmUseCase;
-import com.jmreisswitz.aegromini.usecases.DeleteFarmByIdUseCase;
-import com.jmreisswitz.aegromini.usecases.GetFarmByIdUseCase;
+import com.jmreisswitz.aegromini.usecases.farm.AddFarmUseCase;
+import com.jmreisswitz.aegromini.usecases.farm.DeleteFarmByIdUseCase;
+import com.jmreisswitz.aegromini.usecases.farm.GetFarmByIdUseCase;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

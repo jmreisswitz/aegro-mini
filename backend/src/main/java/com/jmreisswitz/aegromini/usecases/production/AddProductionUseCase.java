@@ -1,4 +1,4 @@
-package com.jmreisswitz.aegromini.usecases;
+package com.jmreisswitz.aegromini.usecases.production;
 
 import com.jmreisswitz.aegromini.domain.Production;
 import com.jmreisswitz.aegromini.ports.repository.ProductionRepository;

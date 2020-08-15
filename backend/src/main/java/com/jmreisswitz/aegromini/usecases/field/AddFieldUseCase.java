@@ -1,4 +1,4 @@
-package com.jmreisswitz.aegromini.usecases;
+package com.jmreisswitz.aegromini.usecases.field;
 
 import com.jmreisswitz.aegromini.domain.Field;
 import com.jmreisswitz.aegromini.ports.repository.FieldRepository;

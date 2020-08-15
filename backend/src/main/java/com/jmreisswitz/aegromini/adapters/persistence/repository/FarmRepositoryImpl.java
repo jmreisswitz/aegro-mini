@@ -5,9 +5,7 @@ import com.jmreisswitz.aegromini.adapters.persistence.entities.FarmEntity;
 import com.jmreisswitz.aegromini.domain.Farm;
 import com.jmreisswitz.aegromini.ports.repository.FarmRepository;
 
-import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 public class FarmRepositoryImpl implements FarmRepository {
     private final FarmMongoRepository farmMongoRepository;
@@ -23,13 +21,6 @@ public class FarmRepositoryImpl implements FarmRepository {
         FarmEntity farmEntity = farmRepositoryConverter.mapToEntity(farm);
         FarmEntity savedEntity = farmMongoRepository.save(farmEntity);
         return this.farmRepositoryConverter.mapToDomain(savedEntity);
-    }
-
-    @Override
-    public List<Farm> listAll() {
-        List<FarmEntity> farmEntities = farmMongoRepository.findAll();
-        return farmEntities.stream().map(farmRepositoryConverter::mapToDomain)
-                .collect(Collectors.toList());
     }
 
     @Override

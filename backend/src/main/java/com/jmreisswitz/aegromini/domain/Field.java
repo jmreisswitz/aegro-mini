@@ -1,5 +1,6 @@
 package com.jmreisswitz.aegromini.domain;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NonNull;
 
@@ -7,9 +8,11 @@ import java.io.Serializable;
 import java.util.Set;
 
 @Data
+@AllArgsConstructor
 public class Field implements Serializable {
-    @NonNull String farmId;
-    @NonNull String id;
-    @NonNull private boolean area;
-    @NonNull private Set<Production> productions;
+    private String name;
+    @NonNull private String farmId;
+    @NonNull private String id;
+    @NonNull private double area;
+    private Set<Production> productions;
 }
