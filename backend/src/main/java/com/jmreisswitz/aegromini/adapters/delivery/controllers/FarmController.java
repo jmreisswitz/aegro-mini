@@ -5,6 +5,7 @@ import com.jmreisswitz.aegromini.adapters.delivery.response.RestResponse;
 import com.jmreisswitz.aegromini.adapters.delivery.rest.FarmRest;
 import com.jmreisswitz.aegromini.domain.Farm;
 import com.jmreisswitz.aegromini.usecases.AddFarmUseCase;
+import com.jmreisswitz.aegromini.usecases.DeleteFarmByIdUseCase;
 import com.jmreisswitz.aegromini.usecases.GetFarmByIdUseCase;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -20,6 +21,7 @@ import java.util.Optional;
 public class FarmController {
     private final AddFarmUseCase addFarmUseCase;
     private final GetFarmByIdUseCase getFarmByIdUseCase;
+    private final DeleteFarmByIdUseCase deleteFarmByIdUseCase;
     private final RestConverter<FarmRest, Farm> restConverter;
 
     @PostMapping
@@ -29,12 +31,17 @@ public class FarmController {
         return new RestResponse<>(HttpStatus.CREATED, "Farm created with success", savedRestFarm);
     }
 
-    @GetMapping(value = "/{id}")
+    @GetMapping("/{id}")
     public RestResponse<FarmRest> getById(@PathVariable String id) {
         Optional<Farm> farm = getFarmByIdUseCase.execute(id);
         FarmRest farmRest = restConverter.mapToRest(farm.orElse(null));
         return new RestResponse<>(HttpStatus.OK, null, farmRest);
     }
 
+    @DeleteMapping("/{id}")
+    public RestResponse<FarmRest> delete(@PathVariable String id){
+        deleteFarmByIdUseCase.execute(id);
+        return new RestResponse<>(HttpStatus.OK, "Farm removed with success.");
+    }
 }
 
