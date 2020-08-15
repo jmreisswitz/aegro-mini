@@ -2,7 +2,7 @@ package com.jmreisswitz.aegromini.adapters.configuration;
 
 import com.jmreisswitz.aegromini.adapters.delivery.converters.FarmRestConverter;
 import com.jmreisswitz.aegromini.adapters.persistence.converters.FarmRepositoryConverter;
-import com.jmreisswitz.aegromini.adapters.persistence.repository.FarmCrudRepository;
+import com.jmreisswitz.aegromini.adapters.persistence.repository.FarmMongoRepository;
 import com.jmreisswitz.aegromini.adapters.persistence.repository.FarmRepositoryImpl;
 import com.jmreisswitz.aegromini.ports.repository.FarmRepository;
 import com.jmreisswitz.aegromini.usecases.AddFarmUseCase;
@@ -15,7 +15,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @EnableJpaRepositories
 public class FarmConfiguration {
     @Autowired
-    private FarmCrudRepository farmCrudRepository;
+    private FarmMongoRepository farmMongoRepository;
 
     @Bean
     public FarmRepositoryConverter createFarmRepositoryConverter(){
@@ -24,7 +24,7 @@ public class FarmConfiguration {
 
     @Bean
     public FarmRepository createPlanetRepository() {
-        return new FarmRepositoryImpl(farmCrudRepository, createFarmRepositoryConverter());
+        return new FarmRepositoryImpl(farmMongoRepository, createFarmRepositoryConverter());
     }
 
     @Bean

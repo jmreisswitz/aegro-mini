@@ -8,11 +8,11 @@ import java.util.HashMap;
 public class FarmRestConverter implements RestConverter<FarmRest, Farm> {
     @Override
     public FarmRest mapToRest(Farm domainObject) {
-        return new FarmRest(domainObject.getId());
+        return new FarmRest(domainObject.getId(), domainObject.getName());
     }
 
     @Override
     public Farm mapToDomain(FarmRest restObject) {
-        return new Farm(restObject.getId(), new HashMap<>());
+        return new Farm(restObject.getId(), restObject.getName(), new HashMap<>());
     }
 }

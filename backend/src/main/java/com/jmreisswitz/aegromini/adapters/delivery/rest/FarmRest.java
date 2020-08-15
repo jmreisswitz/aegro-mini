@@ -13,6 +13,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 public class FarmRest implements Serializable {
-    @NonNull
     private String id;
+    @NonNull
+    private String name;
 }

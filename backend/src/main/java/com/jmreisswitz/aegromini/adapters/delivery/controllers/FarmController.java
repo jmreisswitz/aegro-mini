@@ -9,6 +9,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletResponse;
@@ -16,6 +17,7 @@ import javax.validation.Valid;
 
 @RestController
 @AllArgsConstructor
+@RequestMapping("aegro_mini/farm")
 public class FarmController {
     private final AddFarmUseCase addFarmUseCase;
     private final RestConverter<FarmRest, Farm> restConverter;
@@ -28,3 +30,4 @@ public class FarmController {
     }
 
 }
+

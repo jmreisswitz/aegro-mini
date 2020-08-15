@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface FarmCrudRepository extends MongoRepository<FarmEntity, String> {
+public interface FarmMongoRepository extends MongoRepository<FarmEntity, String> {
     Optional<FarmEntity> findOneById(String id);
     List<FarmEntity> findAll();
 }
