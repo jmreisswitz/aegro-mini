@@ -2,16 +2,13 @@ package com.jmreisswitz.aegromini.usecases.field;
 
 import com.jmreisswitz.aegromini.domain.Field;
 import com.jmreisswitz.aegromini.ports.repository.FieldRepository;
-import lombok.NonNull;
+import lombok.AllArgsConstructor;
 
+@AllArgsConstructor
 public class AddFieldUseCase {
     private final FieldRepository fieldRepository;
 
-    public AddFieldUseCase(@NonNull FieldRepository fieldRepository){
-        this.fieldRepository = fieldRepository;
-    }
-
-    public void execute(Field field){
-        this.fieldRepository.save(field);
+    public Field execute(Field field){
+        return fieldRepository.save(field);
     }
 }

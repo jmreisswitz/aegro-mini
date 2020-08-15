@@ -11,8 +11,8 @@ import java.util.HashMap;
 @AllArgsConstructor
 public class Field implements Serializable {
     private String name;
+    private String id;
     @NonNull private String farmId;
-    @NonNull private String id;
     @NonNull private double area;
     private HashMap<String, Production> productions;
 }

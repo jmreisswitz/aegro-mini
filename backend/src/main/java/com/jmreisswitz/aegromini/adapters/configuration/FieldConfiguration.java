@@ -1,9 +1,14 @@
 package com.jmreisswitz.aegromini.adapters.configuration;
 
+import com.jmreisswitz.aegromini.adapters.delivery.converters.FieldRestConverter;
+import com.jmreisswitz.aegromini.adapters.delivery.converters.RestConverter;
+import com.jmreisswitz.aegromini.adapters.delivery.rest.FieldRest;
 import com.jmreisswitz.aegromini.adapters.persistence.converters.FieldRepositoryConverter;
 import com.jmreisswitz.aegromini.adapters.persistence.repository.FieldMongoRepository;
 import com.jmreisswitz.aegromini.adapters.persistence.repository.FieldRepositoryImpl;
+import com.jmreisswitz.aegromini.domain.Field;
 import com.jmreisswitz.aegromini.ports.repository.FieldRepository;
+import com.jmreisswitz.aegromini.usecases.field.AddFieldUseCase;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -21,6 +26,16 @@ public class FieldConfiguration {
     @Bean
     FieldRepository createFieldRepository() {
         return new FieldRepositoryImpl(fieldMongoRepository, createFieldRepositoryConverter());
+    }
+
+    @Bean
+    RestConverter<FieldRest, Field> createRestConverter() {
+        return new FieldRestConverter();
+    }
+
+    @Bean
+    AddFieldUseCase createAddFieldUseCase() {
+        return new AddFieldUseCase(createFieldRepository());
     }
 
 }

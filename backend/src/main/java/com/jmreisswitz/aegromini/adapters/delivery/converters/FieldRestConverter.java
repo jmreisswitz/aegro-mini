@@ -20,8 +20,8 @@ public class FieldRestConverter implements RestConverter<FieldRest, Field>{
     public Field mapToDomain(FieldRest restObject) {
         return new Field(
                 restObject.getName(),
-                restObject.getFarmId(),
                 restObject.getId(),
+                restObject.getFarmId(),
                 restObject.getArea(),
                 new HashMap<>()
         );
