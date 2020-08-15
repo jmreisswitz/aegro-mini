@@ -14,7 +14,6 @@ import java.io.Serializable;
 public class FieldEntity implements Serializable {
     private String name;
 
-    @NonNull
     @Id
     @GeneratedValue
     private String id;
