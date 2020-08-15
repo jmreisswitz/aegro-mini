@@ -6,13 +6,12 @@ import com.jmreisswitz.aegromini.adapters.persistence.repository.FarmMongoReposi
 import com.jmreisswitz.aegromini.adapters.persistence.repository.FarmRepositoryImpl;
 import com.jmreisswitz.aegromini.ports.repository.FarmRepository;
 import com.jmreisswitz.aegromini.usecases.AddFarmUseCase;
+import com.jmreisswitz.aegromini.usecases.GetFarmByIdUseCase;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @Configuration
-@EnableJpaRepositories
 public class FarmConfiguration {
     @Autowired
     private FarmMongoRepository farmMongoRepository;
@@ -23,13 +22,16 @@ public class FarmConfiguration {
     }
 
     @Bean
-    public FarmRepository createPlanetRepository() {
+    public FarmRepository createFarmRepository() {
         return new FarmRepositoryImpl(farmMongoRepository, createFarmRepositoryConverter());
     }
 
     @Bean
+    public GetFarmByIdUseCase getFarmByIdUseCase() {return new GetFarmByIdUseCase(createFarmRepository());}
+
+    @Bean
     public AddFarmUseCase createAddFarmUseCase() {
-        return new AddFarmUseCase(createPlanetRepository());
+        return new AddFarmUseCase(createFarmRepository());
     }
 
     @Bean
