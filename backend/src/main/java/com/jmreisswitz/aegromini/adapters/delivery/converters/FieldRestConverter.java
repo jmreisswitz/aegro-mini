@@ -3,7 +3,7 @@ package com.jmreisswitz.aegromini.adapters.delivery.converters;
 import com.jmreisswitz.aegromini.adapters.delivery.rest.FieldRest;
 import com.jmreisswitz.aegromini.domain.Field;
 
-import java.util.HashSet;
+import java.util.HashMap;
 
 public class FieldRestConverter implements RestConverter<FieldRest, Field>{
     @Override
@@ -11,7 +11,8 @@ public class FieldRestConverter implements RestConverter<FieldRest, Field>{
         return new FieldRest(
                 domainObject.getId(),
                 domainObject.getName(),
-                domainObject.getFarmId()
+                domainObject.getFarmId(),
+                domainObject.getArea()
         );
     }
 
@@ -22,7 +23,7 @@ public class FieldRestConverter implements RestConverter<FieldRest, Field>{
                 restObject.getFarmId(),
                 restObject.getId(),
                 restObject.getArea(),
-                new HashSet<>()
+                new HashMap<>()
         );
     }
 }

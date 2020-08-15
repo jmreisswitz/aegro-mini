@@ -20,4 +20,6 @@ public class FieldRest implements Serializable {
     @NonNull
     private String farmId;
 
+    @NonNull
+    private double area;
 }

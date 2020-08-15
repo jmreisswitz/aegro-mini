@@ -12,6 +12,8 @@ import java.io.Serializable;
 @AllArgsConstructor
 @Data
 public class FieldEntity implements Serializable {
+    private String name;
+
     @NonNull
     @Id
     @GeneratedValue
