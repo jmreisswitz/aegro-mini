@@ -15,10 +15,10 @@ public class FieldRest implements Serializable {
     private String id;
 
     @NonNull
-    private String name;
+    private String farmId;
 
     @NonNull
-    private String farmId;
+    private String name;
 
     @NonNull
     private double area;

@@ -9,9 +9,9 @@ public class FieldRepositoryConverter implements EntityConverter<FieldEntity, Fi
     @Override
     public FieldEntity mapToEntity(Field domainObject) {
         return new FieldEntity(
-                domainObject.getName(),
                 domainObject.getId(),
                 domainObject.getFarmId(),
+                domainObject.getName(),
                 domainObject.getArea()
         );
     }
@@ -19,11 +19,10 @@ public class FieldRepositoryConverter implements EntityConverter<FieldEntity, Fi
     @Override
     public Field mapToDomain(FieldEntity entityObject) {
         return new Field(
-                entityObject.getName(),
-                entityObject.getFarmId(),
                 entityObject.getId(),
-                entityObject.getArea(),
-                new HashMap<>()
+                entityObject.getFarmId(),
+                entityObject.getName(),
+                entityObject.getArea()
         );
     }
 }

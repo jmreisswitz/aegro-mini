@@ -16,7 +16,7 @@ import java.util.HashMap;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Document(collection="FARM")
+@Document(collection="farms")
 public class FarmEntity implements Serializable {
     @Id
     @GeneratedValue()
@@ -25,6 +25,6 @@ public class FarmEntity implements Serializable {
     @NonNull
     private String name;
 
-    @OneToMany(mappedBy = "field")
+    @OneToMany(mappedBy = "fields")
     private HashMap<String, Field> fields;
 }

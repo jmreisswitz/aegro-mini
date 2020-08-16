@@ -31,8 +31,10 @@ public class FieldController {
 
     @GetMapping("/{id}")
     public RestResponse<FieldRest> getById(@PathVariable String id){
-        // TODO handle not found ids
         Optional<Field> field = getFieldByIdUseCase.execute(id);
+        if (field.isEmpty()){
+            return new RestResponse<>(HttpStatus.NOT_FOUND, "Could not find fild with id " + id);
+        }
         FieldRest fieldRest = restConverter.mapToRest(field.orElse(null));
         return new RestResponse<>(HttpStatus.OK, null, fieldRest);
     }
