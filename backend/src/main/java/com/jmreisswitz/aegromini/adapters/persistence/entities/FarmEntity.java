@@ -9,9 +9,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.persistence.GeneratedValue;
-import javax.persistence.OneToMany;
 import java.io.Serializable;
-import java.util.HashMap;
 
 @Data
 @AllArgsConstructor
@@ -25,6 +23,6 @@ public class FarmEntity implements Serializable {
     @NonNull
     private String name;
 
-    @OneToMany(mappedBy = "fields")
-    private HashMap<String, Field> fields;
+//    @OneToMany(mappedBy = "fields")
+//    private Field fields;
 }

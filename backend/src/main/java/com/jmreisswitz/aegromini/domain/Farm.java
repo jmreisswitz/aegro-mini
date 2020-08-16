@@ -1,18 +1,19 @@
 package com.jmreisswitz.aegromini.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.NonNull;
+import lombok.*;
 
 import java.io.Serializable;
-import java.util.HashMap;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class Farm implements Serializable {
-    String id;
-    @NonNull String name;
-    private HashMap<String, Field> fields;
+    private String id;
+    @NonNull private String name;
+    private List<Field> fields;
+
+//    public void setFields(List<Field> fields){
+//        this.fields = fields;
+//    }
 }

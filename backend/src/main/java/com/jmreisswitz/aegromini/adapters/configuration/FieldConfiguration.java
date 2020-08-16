@@ -44,7 +44,7 @@ public class FieldConfiguration {
     GetFieldByIdUseCase createGetFieldByIdUseCase() { return new GetFieldByIdUseCase(createFieldRepository()); }
 
     @Bean
-    GetFieldsByFarmIdUseCase createGetFieldsByFarmIdUseCase() {
+    public GetFieldsByFarmIdUseCase createGetFieldsByFarmIdUseCase() {
         return new GetFieldsByFarmIdUseCase(createFieldRepository());
     }
 
