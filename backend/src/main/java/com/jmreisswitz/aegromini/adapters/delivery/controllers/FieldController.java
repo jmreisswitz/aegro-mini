@@ -6,12 +6,15 @@ import com.jmreisswitz.aegromini.adapters.delivery.rest.FieldRest;
 import com.jmreisswitz.aegromini.domain.Field;
 import com.jmreisswitz.aegromini.usecases.field.AddFieldUseCase;
 import com.jmreisswitz.aegromini.usecases.field.GetFieldByIdUseCase;
+import com.jmreisswitz.aegromini.usecases.field.GetFieldsByFarmIdUseCase;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -20,6 +23,7 @@ import java.util.Optional;
 public class FieldController {
     private final AddFieldUseCase addFieldUseCase;
     private final GetFieldByIdUseCase getFieldByIdUseCase;
+    private final GetFieldsByFarmIdUseCase getFieldsByFarmIdUseCase;
     private final RestConverter<FieldRest, Field> restConverter;
 
     @PostMapping
@@ -38,4 +42,18 @@ public class FieldController {
         FieldRest fieldRest = restConverter.mapToRest(field.orElse(null));
         return new RestResponse<>(HttpStatus.OK, null, fieldRest);
     }
+
+    @GetMapping("/byfarm/{farmId}")
+    public RestResponse<List<FieldRest>> getByFarmId(@PathVariable String farmId){
+        List<Field> fields = getFieldsByFarmIdUseCase.execute(farmId);
+        if (fields.isEmpty()){
+            return new RestResponse<>(HttpStatus.NOT_FOUND, "Could not found fields for farm with id " + farmId);
+        }
+        List<FieldRest> fieldsRest = new LinkedList<>();
+        for (Field field : fields){
+            fieldsRest.add(restConverter.mapToRest(field));
+        }
+        return new RestResponse<>(HttpStatus.OK, null, fieldsRest);
+    }
+
 }
