@@ -4,6 +4,7 @@ import com.jmreisswitz.aegromini.adapters.delivery.converters.RestConverter;
 import com.jmreisswitz.aegromini.adapters.delivery.response.RestResponse;
 import com.jmreisswitz.aegromini.adapters.delivery.rest.FieldRest;
 import com.jmreisswitz.aegromini.domain.Field;
+import com.jmreisswitz.aegromini.usecases.exceptions.FieldNotFoundException;
 import com.jmreisswitz.aegromini.usecases.field.AddFieldUseCase;
 import com.jmreisswitz.aegromini.usecases.field.GetFieldByIdUseCase;
 import com.jmreisswitz.aegromini.usecases.field.GetFieldsByFarmIdUseCase;
@@ -33,7 +34,7 @@ public class FieldController {
     }
 
     @GetMapping("/{id}")
-    public RestResponse<FieldRest> getById(@PathVariable String id){
+    public RestResponse<FieldRest> getById(@PathVariable String id) throws FieldNotFoundException {
         Optional<Field> field = getFieldByIdUseCase.execute(id);
         if (field.isEmpty()){
             return new RestResponse<>(HttpStatus.NOT_FOUND, "Could not find fild with id " + id);
