@@ -36,9 +36,6 @@ public class FieldController {
     @GetMapping("/{id}")
     public RestResponse<FieldRest> getById(@PathVariable String id) throws FieldNotFoundException {
         Optional<Field> field = getFieldByIdUseCase.execute(id);
-        if (field.isEmpty()){
-            return new RestResponse<>(HttpStatus.NOT_FOUND, "Could not find fild with id " + id);
-        }
         FieldRest fieldRest = restConverter.mapToRest(field.orElse(null));
         return new RestResponse<>(HttpStatus.OK, null, fieldRest);
     }
@@ -46,9 +43,6 @@ public class FieldController {
     @GetMapping("/byfarm/{farmId}")
     public RestResponse<List<FieldRest>> getByFarmId(@PathVariable String farmId){
         List<Field> fields = getFieldsByFarmIdUseCase.execute(farmId);
-        if (fields.isEmpty()){
-            return new RestResponse<>(HttpStatus.NOT_FOUND, "Could not found fields for farm with id " + farmId);
-        }
         List<FieldRest> fieldsRest = new LinkedList<>();
         for (Field field : fields){
             fieldsRest.add(restConverter.mapToRest(field));
