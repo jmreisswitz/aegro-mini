@@ -12,8 +12,4 @@ public class Farm implements Serializable {
     private String id;
     @NonNull private String name;
     private List<Field> fields;
-
-//    public void setFields(List<Field> fields){
-//        this.fields = fields;
-//    }
 }

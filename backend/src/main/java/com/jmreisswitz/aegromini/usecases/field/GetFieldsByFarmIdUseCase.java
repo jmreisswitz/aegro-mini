@@ -12,6 +12,7 @@ public class GetFieldsByFarmIdUseCase {
     private final FieldRepository fieldRepository;
 
     public List<Field> execute(String farmId){
+        // TODO e se a farm não existir?
         return fieldRepository.listAllByFarmId(farmId);
     }
 

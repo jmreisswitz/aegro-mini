@@ -11,6 +11,9 @@ public class AddFarmUseCase {
     }
 
     public Farm execute(Farm farm){
+        if (farm == null){
+            throw new IllegalArgumentException("Farm cannot be null");
+        }
         return this.farmRepository.save(farm);
     }
 }

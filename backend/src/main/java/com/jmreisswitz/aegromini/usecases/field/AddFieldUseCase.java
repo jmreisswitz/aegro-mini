@@ -9,6 +9,9 @@ public class AddFieldUseCase {
     private final FieldRepository fieldRepository;
 
     public Field execute(Field field){
+        if (field == null){
+            throw new IllegalArgumentException("field is null");
+        }
         return fieldRepository.save(field);
     }
 }
