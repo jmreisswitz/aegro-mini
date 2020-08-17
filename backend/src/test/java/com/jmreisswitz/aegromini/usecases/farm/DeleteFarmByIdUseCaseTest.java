@@ -63,6 +63,5 @@ class DeleteFarmByIdUseCaseTest {
         assertThrows(FarmNotFoundException.class,
                 () -> deleteFarmByIdUseCase.execute(fakeId)
         );
-
     }
 }
