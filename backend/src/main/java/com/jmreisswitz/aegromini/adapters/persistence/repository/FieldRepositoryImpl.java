@@ -34,27 +34,14 @@ public class FieldRepositoryImpl implements FieldRepository {
 
     @Override
     public Optional<Field> findOneById(String fieldId) {
-        if (fieldId.isBlank()){
-            throw new UnsupportedOperationException("Id cannot be blank.");
-        }
         Optional<FieldEntity> fieldFromRepository = fieldMongoRepository.findById(fieldId);
-        if (fieldFromRepository.isPresent()) {
-            return Optional.of(fieldRepositoryConverter.mapToDomain(fieldFromRepository.get()));
-        }
-        System.out.println("Empty string");
-        return Optional.empty();
+        if(fieldFromRepository.isEmpty())
+            return Optional.empty();
+        return fieldFromRepository.map(fieldRepositoryConverter::mapToDomain);
     }
 
     @Override
     public void delete(String fieldId) {
-        if (fieldId.isBlank()){
-            throw new UnsupportedOperationException("If cannot be blank");
-        }
-        Optional<FieldEntity> fieldFromRepository = fieldMongoRepository.findById(fieldId);
-        if (fieldFromRepository.isEmpty()){
-            System.out.println("Field oes not exists");
-            return;
-        }
-        fieldMongoRepository.delete(fieldFromRepository.get());
+        fieldMongoRepository.deleteById(fieldId);
     }
 }

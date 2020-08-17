@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 
+import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 
 @Data
@@ -18,6 +19,7 @@ public class FieldRest implements Serializable {
     private String farmId;
 
     @NonNull
+    @NotBlank
     private String name;
 
     @NonNull
