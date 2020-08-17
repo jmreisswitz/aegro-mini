@@ -11,7 +11,6 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import java.util.Optional;
 
@@ -39,7 +38,7 @@ public class FarmController {
     }
 
     @DeleteMapping("/{id}")
-    public RestResponse<FarmRest> delete(@PathVariable String id){
+    public RestResponse<Void> delete(@PathVariable String id){
         deleteFarmByIdUseCase.execute(id);
         return new RestResponse<>(HttpStatus.OK, "Farm removed with success.");
     }

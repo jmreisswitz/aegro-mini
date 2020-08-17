@@ -6,6 +6,7 @@ import com.jmreisswitz.aegromini.adapters.delivery.rest.FieldRest;
 import com.jmreisswitz.aegromini.domain.Field;
 import com.jmreisswitz.aegromini.usecases.exceptions.FieldNotFoundException;
 import com.jmreisswitz.aegromini.usecases.field.AddFieldUseCase;
+import com.jmreisswitz.aegromini.usecases.field.DeleteFieldByIdUseCase;
 import com.jmreisswitz.aegromini.usecases.field.GetFieldByIdUseCase;
 import com.jmreisswitz.aegromini.usecases.field.GetFieldsByFarmIdUseCase;
 import lombok.AllArgsConstructor;
@@ -24,6 +25,7 @@ public class FieldController {
     private final AddFieldUseCase addFieldUseCase;
     private final GetFieldByIdUseCase getFieldByIdUseCase;
     private final GetFieldsByFarmIdUseCase getFieldsByFarmIdUseCase;
+    private final DeleteFieldByIdUseCase deleteFieldByIdUseCase;
     private final RestConverter<FieldRest, Field> restConverter;
 
     @PostMapping
@@ -50,4 +52,9 @@ public class FieldController {
         return new RestResponse<>(HttpStatus.OK, null, fieldsRest);
     }
 
+    @DeleteMapping("/{fieldId}")
+    public RestResponse<Void> delete(@PathVariable String fieldId) throws FieldNotFoundException {
+        deleteFieldByIdUseCase.execute(fieldId);
+        return new RestResponse<>(HttpStatus.OK, "Field deleted");
+    }
 }

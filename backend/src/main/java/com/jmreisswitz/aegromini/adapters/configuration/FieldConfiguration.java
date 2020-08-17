@@ -9,6 +9,7 @@ import com.jmreisswitz.aegromini.adapters.persistence.repository.FieldRepository
 import com.jmreisswitz.aegromini.domain.Field;
 import com.jmreisswitz.aegromini.ports.repository.FieldRepository;
 import com.jmreisswitz.aegromini.usecases.field.AddFieldUseCase;
+import com.jmreisswitz.aegromini.usecases.field.DeleteFieldByIdUseCase;
 import com.jmreisswitz.aegromini.usecases.field.GetFieldByIdUseCase;
 import com.jmreisswitz.aegromini.usecases.field.GetFieldsByFarmIdUseCase;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,6 +47,11 @@ public class FieldConfiguration {
     @Bean
     public GetFieldsByFarmIdUseCase createGetFieldsByFarmIdUseCase() {
         return new GetFieldsByFarmIdUseCase(createFieldRepository());
+    }
+
+    @Bean
+    public DeleteFieldByIdUseCase createDeleteFieldByIdUseCase() {
+        return new DeleteFieldByIdUseCase(createFieldRepository());
     }
 
 }
