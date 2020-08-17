@@ -25,7 +25,7 @@ public class FarmController {
     private final RestConverter<FarmRest, Farm> restConverter;
 
     @PostMapping
-    public RestResponse<FarmRest> save(@Valid @RequestBody FarmRest farmRest, HttpServletResponse response){
+    public RestResponse<FarmRest> save(@Valid @RequestBody FarmRest farmRest){
         Farm farm = restConverter.mapToDomain(farmRest);
         FarmRest savedRestFarm = restConverter.mapToRest(addFarmUseCase.execute(farm));
         return new RestResponse<>(HttpStatus.CREATED, "Farm created with success", savedRestFarm);

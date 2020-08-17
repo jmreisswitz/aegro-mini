@@ -11,7 +11,6 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import java.util.LinkedList;
 import java.util.List;
@@ -27,7 +26,7 @@ public class FieldController {
     private final RestConverter<FieldRest, Field> restConverter;
 
     @PostMapping
-    public RestResponse<FieldRest> save(@Valid @RequestBody FieldRest fieldRest, HttpServletResponse response){
+    public RestResponse<FieldRest> save(@Valid @RequestBody FieldRest fieldRest){
         Field field = restConverter.mapToDomain(fieldRest);
         FieldRest fieldRestSaved = restConverter.mapToRest(addFieldUseCase.execute(field));
         return new RestResponse<>(HttpStatus.CREATED, "Field created with success", fieldRestSaved);
