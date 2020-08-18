@@ -1,15 +1,11 @@
 package com.jmreisswitz.aegromini.adapters.delivery.controllers;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jmreisswitz.aegromini.AegroMiniApplication;
 import com.jmreisswitz.aegromini.adapters.delivery.converters.FieldRestConverter;
 import com.jmreisswitz.aegromini.adapters.delivery.converters.RestConverter;
-import com.jmreisswitz.aegromini.adapters.delivery.rest.FarmRest;
 import com.jmreisswitz.aegromini.adapters.delivery.rest.FieldRest;
-import com.jmreisswitz.aegromini.domain.Farm;
 import com.jmreisswitz.aegromini.domain.Field;
-import com.jmreisswitz.aegromini.usecases.exceptions.FarmNotFoundException;
 import com.jmreisswitz.aegromini.usecases.exceptions.FieldNotFoundException;
 import com.jmreisswitz.aegromini.usecases.field.AddFieldUseCase;
 import com.jmreisswitz.aegromini.usecases.field.DeleteFieldByIdUseCase;
