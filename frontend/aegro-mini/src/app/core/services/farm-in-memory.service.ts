@@ -11,7 +11,8 @@ export class FarmInMemoryService {
   constructor() {
     this.farms = [
       { id: 'abcd', name: 'Farm 1', fields: []},
-      { id: 'abcde', name: 'Farm 2', fields: []}
+      { id: 'abcde', name: 'Farm 2', fields: []},
+      { id: '123456', name: 'W8 fields', fields: []}
     ]
   }
 
