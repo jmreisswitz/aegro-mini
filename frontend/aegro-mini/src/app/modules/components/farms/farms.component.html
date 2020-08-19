@@ -1,0 +1,8 @@
+<h2>My Farms:</h2>
+<ul class="farms">
+  <li *ngFor="let farm of farmList">
+    <a routerLink="/farm/{{farm.id}}">
+      <span>{{farm.name}}</span>
+    </a>
+  </li>
+</ul>

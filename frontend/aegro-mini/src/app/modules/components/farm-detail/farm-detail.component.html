@@ -1,0 +1,9 @@
+<h3>{{farm.name}}</h3>
+<h3>Fields:</h3>
+<ul>
+  <li *ngFor="let field of fieldList">
+    <span>{{field.name}}: {{field.area}}</span>
+  </li>
+</ul>
+
+<button (click)="goBack()">Go Back</button>
