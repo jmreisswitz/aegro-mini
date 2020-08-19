@@ -5,6 +5,8 @@ import com.jmreisswitz.aegromini.adapters.persistence.entities.FarmEntity;
 import com.jmreisswitz.aegromini.domain.Farm;
 import com.jmreisswitz.aegromini.ports.repository.FarmRepository;
 
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Optional;
 
 public class FarmRepositoryImpl implements FarmRepository {
@@ -30,6 +32,16 @@ public class FarmRepositoryImpl implements FarmRepository {
             return Optional.empty();
         }
         return Optional.of(farmRepositoryConverter.mapToDomain(foundFarm.get()));
+    }
+
+    @Override
+    public List<Farm> findAll() {
+        List<FarmEntity> farmEntityList = farmMongoRepository.findAll();
+        LinkedList<Farm> farmsList = new LinkedList<>();
+        for (FarmEntity farmEntity : farmEntityList){
+            farmsList.add(farmRepositoryConverter.mapToDomain(farmEntity));
+        }
+        return farmsList;
     }
 
     @Override

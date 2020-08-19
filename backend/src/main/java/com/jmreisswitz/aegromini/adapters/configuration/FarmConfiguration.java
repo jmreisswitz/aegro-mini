@@ -7,6 +7,7 @@ import com.jmreisswitz.aegromini.adapters.persistence.repository.FarmRepositoryI
 import com.jmreisswitz.aegromini.ports.repository.FarmRepository;
 import com.jmreisswitz.aegromini.usecases.farm.AddFarmUseCase;
 import com.jmreisswitz.aegromini.usecases.farm.DeleteFarmByIdUseCase;
+import com.jmreisswitz.aegromini.usecases.farm.GetAllFarmsUseCase;
 import com.jmreisswitz.aegromini.usecases.farm.GetFarmByIdUseCase;
 import com.jmreisswitz.aegromini.usecases.field.GetFieldsByFarmIdUseCase;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,5 +50,6 @@ public class FarmConfiguration {
         return new FarmRestConverter();
     }
 
-
+    @Bean
+    public GetAllFarmsUseCase createGetAllFarmsUseCase() { return new GetAllFarmsUseCase(createFarmRepository());}
 }
