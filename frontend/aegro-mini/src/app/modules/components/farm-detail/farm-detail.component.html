@@ -1,6 +1,7 @@
 <div *ngIf="farm">
-  <h3>{{farm.name}}</h3>
-  <h3>Fields:</h3>
+  <h2 class="page-header">Farm {{farm.name}}</h2>
   <app-fields [farmId]="id"></app-fields>
 </div>
-<button (click)="goBack()">Go Back</button>
+<div class="go-back-button-container">
+  <button class="go-back-button" (click)="goBack()">Go Back</button>
+</div>

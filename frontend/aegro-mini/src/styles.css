@@ -1,1 +1,29 @@
-/* You can add global styles to this file, and also import other style files */
+.page-header {
+  text-align: center;
+}
+
+.panel-body {
+  color: black;
+  text-align: center;
+  font-size: 20px;
+}
+
+.panel-body:hover {
+  background: lightgrey;
+}
+
+.go-back-button-container {
+  position: center;
+  text-align: center;
+}
+
+.go-back-button {
+  background: none;
+  padding:0.35em 1.2em;
+  font-size: 15px;
+  transition: all 0.2s;
+}
+
+.go-back-button:hover {
+  background-color: lightgray;
+}
