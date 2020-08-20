@@ -3,9 +3,10 @@ import {ActivatedRoute} from "@angular/router";
 import { Location } from '@angular/common';
 
 import {FieldInMemoryService} from "../../../core/services/field-in-memory.service";
-import {FarmInMemoryService} from "../../../core/services/farm-in-memory.service";
 import {Farm} from "../../../core/models/farm";
 import {Field} from "../../../core/models/field";
+import {FarmService} from "../../../core/services/farm.service";
+import {FieldService} from "../../../core/services/field.service";
 
 @Component({
   selector: 'app-farm-detail',
@@ -13,13 +14,13 @@ import {Field} from "../../../core/models/field";
   styleUrls: ['./farm-detail.component.css']
 })
 export class FarmDetailComponent implements OnInit {
-  @Input() farm: Farm;
-  fieldList: Field[];
+  farm: Farm;
+  fieldList: Field[] = [];
 
   constructor(
     private route: ActivatedRoute,
-    private fieldService: FieldInMemoryService,
-    private farmService: FarmInMemoryService,
+    private fieldService: FieldService,
+    private farmService: FarmService,
     private location: Location
   ) { }
 
@@ -29,8 +30,10 @@ export class FarmDetailComponent implements OnInit {
 
   private getFarm() {
     const id = this.route.snapshot.paramMap.get('id');
-    this.farmService.getFarm(id).subscribe(farm => this.farm = farm);
-    this.fieldList = this.fieldService.getFieldsByFarmId(id);
+    this.farmService.getFarm(id)
+      .subscribe(farm => this.farm = farm['data']);
+    this.fieldService.getFieldsByFarmId(id)
+      .subscribe(fields => this.fieldList = fields['data']);
   }
 
   goBack() {

@@ -3,7 +3,6 @@
   <span>não tem fazendas</span>
 </div>
 <div *ngIf="farmList.length > 0">
-  <span>tem fazendas</span>
   <ul class="farms">
     <li *ngFor="let farm of farmList">
       <a routerLink="/farm/{{farm.id}}">

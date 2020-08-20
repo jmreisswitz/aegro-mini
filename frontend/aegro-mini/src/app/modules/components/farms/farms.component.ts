@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Farm } from "../../../core/models/farm";
-import {FarmServiceService} from "../../../core/services/farm-service.service";
+import { FarmService } from "../../../core/services/farm.service";
 
 @Component({
   selector: 'app-farms',
@@ -10,9 +10,9 @@ import {FarmServiceService} from "../../../core/services/farm-service.service";
 })
 export class FarmsComponent implements OnInit {
 
-  farmList: Farm[];
+  farmList: Farm[] = [];
 
-  constructor(private farmService: FarmServiceService) { }
+  constructor(private farmService: FarmService) { }
 
   ngOnInit(): void {
     this.getFarms();

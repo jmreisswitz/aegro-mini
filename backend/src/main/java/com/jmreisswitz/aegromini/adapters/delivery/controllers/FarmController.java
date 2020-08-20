@@ -34,6 +34,7 @@ public class FarmController {
         return new RestResponse<>(HttpStatus.CREATED, "Farm created with success", savedRestFarm);
     }
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/farms")
     public RestResponse<List<FarmRest>> getAll() {
         List<Farm> farmList = getAllFarmsUseCase.execute();
@@ -44,7 +45,7 @@ public class FarmController {
         return new RestResponse<>(HttpStatus.OK, null, farmRestList);
     }
 
-
+    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/{id}")
     public RestResponse<FarmRest> getById(@PathVariable String id) {
         Optional<Farm> farm = getFarmByIdUseCase.execute(id);

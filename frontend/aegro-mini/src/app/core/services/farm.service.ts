@@ -10,7 +10,7 @@ import {Observable} from "rxjs";
 @Injectable({
   providedIn: 'root'
 })
-export class FarmServiceService {
+export class FarmService {
   private farmUrl: string = 'http://localhost:8081/aegro_mini/farm/';
 
   constructor(private http: HttpClient) { }
