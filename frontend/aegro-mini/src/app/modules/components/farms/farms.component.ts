@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Farm } from "../../../core/models/farm";
-import {FarmInMemoryService} from "../../../core/services/farm-in-memory.service";
+import {FarmServiceService} from "../../../core/services/farm-service.service";
 
 @Component({
   selector: 'app-farms',
@@ -12,13 +12,14 @@ export class FarmsComponent implements OnInit {
 
   farmList: Farm[];
 
-  constructor(private farmService: FarmInMemoryService) { }
+  constructor(private farmService: FarmServiceService) { }
 
   ngOnInit(): void {
     this.getFarms();
   }
 
   private getFarms(): void {
-    this.farmList = this.farmService.getFarms();
+    this.farmService.getFarms()
+      .subscribe(farms => this.farmList = farms['data']);
   }
 }

@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { FarmsComponent } from './modules/components/farms/farms.component';
 import { FarmDetailComponent } from './modules/components/farm-detail/farm-detail.component';
 import { AppRoutingModule } from './modules/app-routing.module';
+import { HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { AppRoutingModule } from './modules/app-routing.module';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule
   ],
   providers: [],

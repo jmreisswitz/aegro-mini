@@ -5,7 +5,8 @@ import {FarmDetailComponent} from "./components/farm-detail/farm-detail.componen
 
 
 const routes: Routes = [
-  { path: '', redirectTo: 'farms', pathMatch: 'full'},
+  // { path: '', redirectTo: 'farms', pathMatch: 'full'},
+  { path: '', component: FarmsComponent},
   { path: 'farms', component: FarmsComponent},
   { path: 'farm/:id', component: FarmDetailComponent }
 ]
