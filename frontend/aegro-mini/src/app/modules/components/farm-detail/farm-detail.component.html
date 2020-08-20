@@ -1,15 +1,6 @@
 <div *ngIf="farm">
   <h3>{{farm.name}}</h3>
   <h3>Fields:</h3>
-  <div *ngIf="fieldList.length > 0">
-    <ul>
-      <li *ngFor="let field of fieldList">
-        <span>{{field.name}}: {{field.area}}</span>
-      </li>
-    </ul>
-  </div>
-  <div *ngIf="fieldList.length === 0">
-    <span>You have no fields on this farm.</span>
-  </div>
+  <app-fields [farmId]="id"></app-fields>
 </div>
 <button (click)="goBack()">Go Back</button>

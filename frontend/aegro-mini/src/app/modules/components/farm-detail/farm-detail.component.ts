@@ -16,6 +16,7 @@ import {FieldService} from "../../../core/services/field.service";
 export class FarmDetailComponent implements OnInit {
   farm: Farm;
   fieldList: Field[] = [];
+  id: string;
 
   constructor(
     private route: ActivatedRoute,
@@ -29,10 +30,10 @@ export class FarmDetailComponent implements OnInit {
   }
 
   private getFarm() {
-    const id = this.route.snapshot.paramMap.get('id');
-    this.farmService.getFarm(id)
+    this.id = this.route.snapshot.paramMap.get('id');
+    this.farmService.getFarm(this.id)
       .subscribe(farm => this.farm = farm['data']);
-    this.fieldService.getFieldsByFarmId(id)
+    this.fieldService.getFieldsByFarmId(this.id)
       .subscribe(fields => this.fieldList = fields['data']);
   }
 

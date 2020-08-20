@@ -1,0 +1,10 @@
+<div *ngIf="fields.length > 0">
+  <ul>
+    <li *ngFor="let field of fields">
+      <span>{{field.name}}: {{field.area}}</span>
+    </li>
+  </ul>
+</div>
+<div *ngIf="fields.length === 0">
+  <span>You have no fields on this farm.</span>
+</div>
