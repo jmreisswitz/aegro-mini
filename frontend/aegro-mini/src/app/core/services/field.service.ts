@@ -12,6 +12,10 @@ export class FieldService {
   constructor(private http: HttpClient) { }
 
   getFieldsByFarmId(farmId: string): Observable<Field[]> {
-    return this.http.get<Field[]>(this.fieldUrl + '/byfarm/' + farmId);
+    return this.http.get<Field[]>(this.fieldUrl + 'byfarm/' + farmId);
+  }
+
+  getFieldById(fieldId: string): Observable<Field> {
+    return this.http.get<Field>(this.fieldUrl + fieldId);
   }
 }

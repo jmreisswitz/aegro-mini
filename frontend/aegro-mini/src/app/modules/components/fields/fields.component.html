@@ -1,7 +1,9 @@
 <div *ngIf="fields.length > 0">
   <ul>
     <li *ngFor="let field of fields">
-      <span>{{field.name}}: {{field.area}}</span>
+      <a routerLink="/field/{{field.id}}">
+        <span>{{field.name}}</span>
+      </a>
     </li>
   </ul>
 </div>

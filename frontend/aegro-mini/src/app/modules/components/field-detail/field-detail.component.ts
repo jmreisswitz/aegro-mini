@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import {FieldService} from "../../../core/services/field.service";
+import {Field} from "../../../core/models/field";
+import {ActivatedRoute} from "@angular/router";
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-field-detail',
@@ -7,9 +11,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FieldDetailComponent implements OnInit {
 
-  constructor() { }
+  field: Field;
+
+  constructor(
+    private route: ActivatedRoute,
+    private fieldService: FieldService,
+    private location: Location
+  ) { }
 
   ngOnInit(): void {
+    this.getField();
+  }
+
+  getField(): void {
+    const id = this.route.snapshot.paramMap.get('id');
+    this.fieldService.getFieldById(id)
+      .subscribe(field => this.field = field['data']);
+  }
+
+  goBack() {
+    this.location.back();
   }
 
 }

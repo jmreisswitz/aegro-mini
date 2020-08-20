@@ -1,1 +1,7 @@
-<p>field-detail works!</p>
+
+<div *ngIf="field">
+  <h3>Field {{field.name}}</h3>
+  <span>Area: {{field.area}}</span>
+  <span><br><br></span>
+</div>
+<button (click)="goBack()">Go Back</button>
