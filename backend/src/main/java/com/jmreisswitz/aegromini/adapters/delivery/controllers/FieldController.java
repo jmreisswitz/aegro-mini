@@ -35,6 +35,7 @@ public class FieldController {
         return new RestResponse<>(HttpStatus.CREATED, "Field created with success", fieldRestSaved);
     }
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/{id}")
     public RestResponse<FieldRest> getById(@PathVariable String id) throws FieldNotFoundException {
         Optional<Field> field = getFieldByIdUseCase.execute(id);
@@ -42,6 +43,7 @@ public class FieldController {
         return new RestResponse<>(HttpStatus.OK, null, fieldRest);
     }
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/byfarm/{farmId}")
     public RestResponse<List<FieldRest>> getByFarmId(@PathVariable String farmId){
         List<Field> fields = getFieldsByFarmIdUseCase.execute(farmId);

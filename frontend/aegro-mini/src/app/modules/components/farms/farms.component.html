@@ -1,0 +1,14 @@
+<h2 class="page-header">Farms:</h2>
+<div *ngIf="farmList.length === 0">
+  <span>não tem fazendas</span>
+</div>
+<div *ngIf="farmList.length > 0">
+   <div class="panel panel-default" *ngFor="let farm of farmList">
+     <div class="panel-body">
+      <a routerLink="/farm/{{farm.id}}">
+        <span>{{farm.name}}</span>
+      </a>
+     </div>
+    </div>
+</div>
+

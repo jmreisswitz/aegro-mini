@@ -1,0 +1,14 @@
+<div *ngIf="fields.length > 0">
+  <div *ngFor="let field of fields">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <a routerLink="/field/{{field.id}}">
+          <span>{{field.name}}</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="fields.length === 0">
+  <span>You have no fields on this farm.</span>
+</div>

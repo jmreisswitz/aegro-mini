@@ -1,0 +1,11 @@
+
+<div *ngIf="field">
+  <h3 class="page-header">Field {{field.name}}</h3>
+  <div class="field-details">
+    <span>Area: {{field.area}}</span>
+  </div>
+  <span><br><br></span>
+</div>
+<div class="go-back-button-container">
+  <button class="go-back-button" (click)="goBack()">Go Back</button>
+</div>

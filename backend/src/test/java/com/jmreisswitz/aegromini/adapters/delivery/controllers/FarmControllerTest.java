@@ -10,6 +10,7 @@ import com.jmreisswitz.aegromini.domain.Farm;
 import com.jmreisswitz.aegromini.usecases.exceptions.FarmNotFoundException;
 import com.jmreisswitz.aegromini.usecases.farm.AddFarmUseCase;
 import com.jmreisswitz.aegromini.usecases.farm.DeleteFarmByIdUseCase;
+import com.jmreisswitz.aegromini.usecases.farm.GetAllFarmsUseCase;
 import com.jmreisswitz.aegromini.usecases.farm.GetFarmByIdUseCase;
 import org.apache.commons.lang.RandomStringUtils;
 import org.junit.jupiter.api.AfterEach;
@@ -29,6 +30,7 @@ import org.springframework.test.web.servlet.setup.DefaultMockMvcBuilder;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
+import java.util.LinkedList;
 import java.util.Optional;
 
 import static org.mockito.Mockito.*;
@@ -54,6 +56,9 @@ class FarmControllerTest {
     @MockBean
     private DeleteFarmByIdUseCase deleteFarmByIdUseCase;
 
+    @MockBean
+    private GetAllFarmsUseCase getAllFarmsUseCase;
+
     private RestConverter<FarmRest, Farm> restConverter;
 
     private FarmController farmController;
@@ -72,6 +77,7 @@ class FarmControllerTest {
                 addFarmUseCase,
                 getFarmByIdUseCase,
                 deleteFarmByIdUseCase,
+                getAllFarmsUseCase,
                 restConverter
         );
     }
@@ -107,6 +113,18 @@ class FarmControllerTest {
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(farmRest)))
                 .andExpect(status().isBadRequest());
+    }
+
+    @Test
+    void getAll_allGood_shouldReturnHttp200() throws Exception {
+        LinkedList<Farm> farms = new LinkedList<>();
+        farms.add(new Farm(fakeFarmId, "name", null));
+        when(getAllFarmsUseCase.execute()).thenReturn(farms);
+
+        mockMvc.perform(MockMvcRequestBuilders
+                .get("/aegro_mini/farm/farms")
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk());
     }
 
     @Test
