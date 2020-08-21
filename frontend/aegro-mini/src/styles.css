@@ -22,6 +22,11 @@
   text-align: center;
 }
 
+.add-farm-button-container {
+  position: center;
+  text-align: center;
+}
+
 .go-back-button {
   background: none;
   padding:0.35em 1.2em;

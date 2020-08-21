@@ -18,6 +18,12 @@ export class FarmsComponent implements OnInit {
     this.getFarms();
   }
 
+  addFarm(name: string) {
+    this.farmService.addFarm({name} as Farm)
+      .subscribe();
+    this.getFarms();
+  }
+
   private getFarms(): void {
     this.farmService.getFarms()
       .subscribe(farms => this.farmList = farms['data']);

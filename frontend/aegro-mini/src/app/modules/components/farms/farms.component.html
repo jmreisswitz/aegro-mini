@@ -11,4 +11,13 @@
      </div>
     </div>
 </div>
+<div class="add-farm-button-container">
+  <label>
+    <input #farmName/>
+  </label>
+  <button class="btn btn-success"
+    (click)="addFarm(farmName.value); farmName.value=''">
+    Add Farm
+  </button>
+</div>
 

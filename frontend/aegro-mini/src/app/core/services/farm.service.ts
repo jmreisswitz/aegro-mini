@@ -23,6 +23,10 @@ export class FarmService {
     return this.http.get<Farm>(this.farmUrl + id);
   }
 
+  addFarm(farm: Farm): Observable<Farm> {
+    return this.http.post<Farm>(this.farmUrl, farm);
+  }
+
   deleteFarm(id: string): Observable<Farm> {
     return this.http.delete<Farm>(this.farmUrl + id);
   }
