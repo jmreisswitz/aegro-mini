@@ -2,6 +2,7 @@ package com.jmreisswitz.aegromini.ports.repository;
 
 import com.jmreisswitz.aegromini.domain.Production;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.Optional;
 
