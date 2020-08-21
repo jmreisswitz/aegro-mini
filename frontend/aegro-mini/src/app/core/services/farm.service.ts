@@ -22,4 +22,8 @@ export class FarmService {
   getFarm(id: string): Observable<Farm> {
     return this.http.get<Farm>(this.farmUrl + id);
   }
+
+  deleteFarm(id: string): Observable<Farm> {
+    return this.http.delete<Farm>(this.farmUrl + id);
+  }
 }

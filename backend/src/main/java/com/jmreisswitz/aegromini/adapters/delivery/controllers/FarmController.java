@@ -27,6 +27,7 @@ public class FarmController {
     private final GetAllFarmsUseCase getAllFarmsUseCase;
     private final RestConverter<FarmRest, Farm> restConverter;
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping
     public RestResponse<FarmRest> save(@Valid @RequestBody FarmRest farmRest){
         Farm farm = restConverter.mapToDomain(farmRest);
@@ -53,6 +54,7 @@ public class FarmController {
         return new RestResponse<>(HttpStatus.OK, null, farmRest);
     }
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @DeleteMapping("/{id}")
     public RestResponse<Void> delete(@PathVariable String id){
         deleteFarmByIdUseCase.execute(id);

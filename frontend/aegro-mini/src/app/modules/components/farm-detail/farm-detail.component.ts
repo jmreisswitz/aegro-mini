@@ -30,6 +30,13 @@ export class FarmDetailComponent implements OnInit {
       .subscribe(farm => this.farm = farm['data']);
   }
 
+  public deleteFarm() {
+    this.id = this.route.snapshot.paramMap.get('id');
+    this.farmService.deleteFarm(this.id)
+      .subscribe(farm => this.farm = farm['data']);
+    this.goBack();
+  }
+
   goBack() {
     this.location.back();
   }
