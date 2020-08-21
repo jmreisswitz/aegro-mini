@@ -22,4 +22,8 @@ export class FieldService {
   getFieldById(fieldId: string): Observable<Field> {
     return this.http.get<Field>(this.fieldUrl + fieldId);
   }
+
+  deleteField(fieldId: string): Observable<Field> {
+    return this.http.delete<Field>(this.fieldUrl + fieldId);
+  }
 }

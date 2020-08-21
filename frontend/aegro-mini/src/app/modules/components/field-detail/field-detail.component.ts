@@ -29,6 +29,13 @@ export class FieldDetailComponent implements OnInit {
       .subscribe(field => this.field = field['data']);
   }
 
+  deleteField(): void {
+    const id = this.route.snapshot.paramMap.get('id');
+    this.fieldService.deleteField(id)
+      .subscribe();
+    this.goBack();
+  }
+
   goBack() {
     this.location.back();
   }
