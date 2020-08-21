@@ -15,6 +15,10 @@ export class FieldService {
     return this.http.get<Field[]>(this.fieldUrl + 'byfarm/' + farmId);
   }
 
+  addField(field: Field): Observable<Field> {
+    return this.http.post<Field>(this.fieldUrl, field);
+  }
+
   getFieldById(fieldId: string): Observable<Field> {
     return this.http.get<Field>(this.fieldUrl + fieldId);
   }

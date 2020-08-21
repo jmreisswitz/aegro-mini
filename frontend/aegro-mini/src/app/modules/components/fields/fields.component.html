@@ -9,6 +9,26 @@
     </div>
   </div>
 </div>
-<div *ngIf="fields.length === 0">
-  <span>You have no fields on this farm.</span>
+<div class="add-field-button-container">
+  <label>
+    <input #fieldName/>
+  </label>
+  <label>
+    <input #fieldArea type="number"/>
+  </label>
+  <button class="btn btn-success"
+          (click)="addField(fieldName.value, fieldArea.value); fieldName.value='';">
+    Add Field
+  </button>
 </div>
+
+
+<!--<div class="add-farm-button-container">-->
+<!--  <label>-->
+<!--    <input #farmName/>-->
+<!--  </label>-->
+<!--  <button class="btn btn-success"-->
+<!--          (click)="addFarm(farmName.value); farmName.value=''">-->
+<!--    Add Farm-->
+<!--  </button>-->
+<!--</div>-->

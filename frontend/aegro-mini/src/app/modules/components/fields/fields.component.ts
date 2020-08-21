@@ -20,6 +20,11 @@ export class FieldsComponent implements OnInit {
     this.getFields();
   }
 
+  addField(name: string, area: number) {
+    this.fieldService.addField({name: name, area: area, farmId: this.farmId} as Field)
+      .subscribe(field => this.fields.push(field['data']));
+  }
+
   getFields(): void {
     this.fieldService.getFieldsByFarmId(this.farmId)
       .subscribe(fields => this.fields = fields['data']);

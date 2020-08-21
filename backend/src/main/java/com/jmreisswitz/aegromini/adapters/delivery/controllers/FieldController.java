@@ -28,6 +28,7 @@ public class FieldController {
     private final DeleteFieldByIdUseCase deleteFieldByIdUseCase;
     private final RestConverter<FieldRest, Field> restConverter;
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping
     public RestResponse<FieldRest> save(@Valid @RequestBody FieldRest fieldRest){
         Field field = restConverter.mapToDomain(fieldRest);
@@ -54,6 +55,7 @@ public class FieldController {
         return new RestResponse<>(HttpStatus.OK, null, fieldsRest);
     }
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @DeleteMapping("/{fieldId}")
     public RestResponse<Void> delete(@PathVariable String fieldId) throws FieldNotFoundException {
         deleteFieldByIdUseCase.execute(fieldId);

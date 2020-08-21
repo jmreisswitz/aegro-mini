@@ -1,3 +1,8 @@
 a {
   color: black;
 }
+
+.add-field-button-container {
+  position: center;
+  text-align: center;
+}
