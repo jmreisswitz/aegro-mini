@@ -8,6 +8,8 @@ import { AppRoutingModule } from './modules/app-routing.module';
 import { HttpClientModule} from "@angular/common/http";
 import { FieldDetailComponent } from './modules/components/field-detail/field-detail.component';
 import { FieldsComponent } from './modules/components/fields/fields.component';
+import { ProductionsComponent } from './modules/components/productions/productions.component';
+import { ProductionDetailComponent } from './modules/components/production-detail/production-detail.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,9 @@ import { FieldsComponent } from './modules/components/fields/fields.component';
     FarmsComponent,
     FarmDetailComponent,
     FieldDetailComponent,
-    FieldsComponent
+    FieldsComponent,
+    ProductionsComponent,
+    ProductionDetailComponent
   ],
   imports: [
     BrowserModule,

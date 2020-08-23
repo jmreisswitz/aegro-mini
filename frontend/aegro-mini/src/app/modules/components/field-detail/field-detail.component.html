@@ -1,10 +1,13 @@
-
 <div *ngIf="field">
   <h3 class="page-header">Field {{field.name}}</h3>
   <div class="field-details">
     <span>Area: {{field.area}}</span>
   </div>
   <span><br><br></span>
+</div>
+<div>
+  <h3 class="page-header"> Productions: </h3>
+  <app-productions [fieldId]="fieldId"></app-productions>
 </div>
 <div class="delete-button-container">
   <button class="btn btn-danger" (click)="deleteField()">

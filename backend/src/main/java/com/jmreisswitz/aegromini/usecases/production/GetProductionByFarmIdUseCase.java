@@ -3,13 +3,16 @@ package com.jmreisswitz.aegromini.usecases.production;
 import com.jmreisswitz.aegromini.domain.Production;
 import com.jmreisswitz.aegromini.ports.repository.ProductionRepository;
 import lombok.AllArgsConstructor;
-import lombok.NonNull;
+
+import java.util.List;
 
 @AllArgsConstructor
-public class AddProductionUseCase {
+public class GetProductionByFarmIdUseCase {
+
     private final ProductionRepository productionRepository;
 
-    public Production execute(Production production){
-        return this.productionRepository.save(production);
+    public List<Production> execute(String farmId) {
+        return null;
     }
+
 }
