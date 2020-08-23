@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {ProductionService} from "../../../core/services/production.service";
 import {Production} from "../../../core/models/production";
-import {Observer} from "rxjs";
 
 @Component({
   selector: 'app-productions',
@@ -10,16 +9,25 @@ import {Observer} from "rxjs";
 })
 export class ProductionsComponent implements OnInit {
 
-  productions: Production[];
+  @Input() fieldId: string;
+  productions: Production[] = [];
 
   constructor(private productionService: ProductionService) { }
 
   ngOnInit(): void {
   }
 
+  addProduction(productionType: string, productionAmount: number) {
+    this.productionService.addProduction({
+      fieldId: this.fieldId,
+      productionType: productionType,
+      productionAmount: productionAmount
+    } as Production).subscribe(production => this.productions.push(production['data']));
+  }
+
   getProductions(fieldId: string): void{
     this.productionService.getProductionsByFieldId(fieldId)
-      .subscribe(productions => this.productions = productions);
+      .subscribe(productions => this.productions = productions['data']);
   }
 
 

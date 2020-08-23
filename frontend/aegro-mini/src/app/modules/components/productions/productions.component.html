@@ -1,1 +1,24 @@
-<p>productions works!</p>
+<div *ngIf="productions.length > 0">
+  <div *ngFor="let production of productions">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <a routerLink="/production/{{production.id}}">
+          <span>{{production.productionType}} : {{production.productionAmount}}</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="add-production-button-container">
+  <label>
+    <input #productionType/>
+  </label>
+  <label>
+    <input #productionAmount type="number"/>
+  </label>
+  <button class="btn btn-success"
+          (click)="addProduction(productionType.value, productionAmount.value);
+productionAmount.value=''; productionType.value=''">
+    Add Production
+  </button>
+</div>
