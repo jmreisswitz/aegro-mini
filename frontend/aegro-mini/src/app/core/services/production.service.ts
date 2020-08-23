@@ -11,6 +11,10 @@ export class ProductionService {
 
   constructor(private http: HttpClient) { }
 
+  addProduction(production: Production): Observable<Production> {
+    return this.http.post<Production>(this.productionUrl, production);
+  }
+
   getProductionsByFieldId(fieldId: string): Observable<Production[]> {
     return this.http.get<Production[]>(this.productionUrl + 'field_id/' + fieldId);
   }
