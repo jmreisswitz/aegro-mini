@@ -12,7 +12,7 @@ import {FarmService} from "../../../core/services/farm.service";
 })
 export class FarmDetailComponent implements OnInit {
   farm: Farm;
-  id: string;
+  farmId: string;
 
   constructor(
     private route: ActivatedRoute,
@@ -25,14 +25,14 @@ export class FarmDetailComponent implements OnInit {
   }
 
   private getFarm() {
-    this.id = this.route.snapshot.paramMap.get('id');
-    this.farmService.getFarm(this.id)
+    this.farmId = this.route.snapshot.paramMap.get('id');
+    this.farmService.getFarm(this.farmId)
       .subscribe(farm => this.farm = farm['data']);
   }
 
   public deleteFarm() {
-    this.id = this.route.snapshot.paramMap.get('id');
-    this.farmService.deleteFarm(this.id)
+    this.farmId = this.route.snapshot.paramMap.get('id');
+    this.farmService.deleteFarm(this.farmId)
       .subscribe(farm => this.farm = farm['data']);
     this.goBack();
   }

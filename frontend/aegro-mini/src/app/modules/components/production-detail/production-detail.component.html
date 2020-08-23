@@ -1,0 +1,14 @@
+<div *ngIf="production">
+  <h3 class="page-header">Production Registry:</h3>
+  <div class="production-details">
+    <span>{{production.productionType}}: {{production.productionAmount}}</span>
+  </div>
+</div>
+<div class="delete-button-container">
+  <button class="btn btn-danger" (click)="deleteProduction()">
+    Delete Production Registry
+  </button>
+</div>
+<div class="go-back-button-container">
+  <button class="btn btn-secondary" (click)="goBack()">Go Back</button>
+</div>

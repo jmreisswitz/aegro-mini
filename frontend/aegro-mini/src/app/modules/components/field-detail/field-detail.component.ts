@@ -12,6 +12,7 @@ import { Location } from '@angular/common';
 export class FieldDetailComponent implements OnInit {
 
   field: Field;
+  fieldId: string;
 
   constructor(
     private route: ActivatedRoute,
@@ -24,14 +25,14 @@ export class FieldDetailComponent implements OnInit {
   }
 
   getField(): void {
-    const id = this.route.snapshot.paramMap.get('id');
-    this.fieldService.getFieldById(id)
+    this.fieldId = this.route.snapshot.paramMap.get('id');
+    this.fieldService.getFieldById(this.fieldId)
       .subscribe(field => this.field = field['data']);
   }
 
   deleteField(): void {
-    const id = this.route.snapshot.paramMap.get('id');
-    this.fieldService.deleteField(id)
+    this.fieldId = this.route.snapshot.paramMap.get('id');
+    this.fieldService.deleteField(this.fieldId)
       .subscribe();
     this.goBack();
   }

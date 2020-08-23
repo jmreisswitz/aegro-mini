@@ -9,6 +9,7 @@ import { HttpClientModule} from "@angular/common/http";
 import { FieldDetailComponent } from './modules/components/field-detail/field-detail.component';
 import { FieldsComponent } from './modules/components/fields/fields.component';
 import { ProductionsComponent } from './modules/components/productions/productions.component';
+import { ProductionDetailComponent } from './modules/components/production-detail/production-detail.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { ProductionsComponent } from './modules/components/productions/productio
     FarmDetailComponent,
     FieldDetailComponent,
     FieldsComponent,
-    ProductionsComponent
+    ProductionsComponent,
+    ProductionDetailComponent
   ],
   imports: [
     BrowserModule,

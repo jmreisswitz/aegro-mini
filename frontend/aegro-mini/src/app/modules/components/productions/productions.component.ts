@@ -15,6 +15,7 @@ export class ProductionsComponent implements OnInit {
   constructor(private productionService: ProductionService) { }
 
   ngOnInit(): void {
+    this.getProductions(this.fieldId);
   }
 
   addProduction(productionType: string, productionAmount: number) {

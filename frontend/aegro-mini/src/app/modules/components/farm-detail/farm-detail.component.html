@@ -1,6 +1,6 @@
 <div *ngIf="farm">
   <h2 class="page-header">Farm {{farm.name}}</h2>
-  <app-fields [farmId]="id"></app-fields>
+  <app-fields [farmId]="farmId"></app-fields>
 </div>
 <div class="delete-button-container">
   <button class="btn btn-danger" (click)="deleteFarm()">Delete this farm</button>
