@@ -1,16 +1,14 @@
-package com.jmreisswitz.aegromini.adapters.persistence.entities;
+package com.jmreisswitz.aegromini.adapters.delivery.rest;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NonNull;
-import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.io.Serializable;
 
 @Data
 @AllArgsConstructor
-@Document("production")
-public class ProductionEntity implements Serializable {
+public class ProductionRest implements Serializable {
     String id;
     @NonNull String fieldId;
     String productionType;

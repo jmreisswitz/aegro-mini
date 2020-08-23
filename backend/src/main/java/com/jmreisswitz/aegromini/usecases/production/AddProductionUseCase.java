@@ -9,7 +9,7 @@ import lombok.NonNull;
 public class AddProductionUseCase {
     private final ProductionRepository productionRepository;
 
-    public void execute(Production production){
-        this.productionRepository.save(production);
+    public Production execute(Production production){
+        return this.productionRepository.save(production);
     }
 }

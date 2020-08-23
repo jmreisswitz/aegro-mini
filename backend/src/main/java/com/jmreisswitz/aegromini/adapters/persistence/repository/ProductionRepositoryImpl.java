@@ -1,5 +1,6 @@
 package com.jmreisswitz.aegromini.adapters.persistence.repository;
 
+import com.jmreisswitz.aegromini.adapters.persistence.converters.EntityConverter;
 import com.jmreisswitz.aegromini.adapters.persistence.converters.ProductionRepositoryConverter;
 import com.jmreisswitz.aegromini.adapters.persistence.entities.ProductionEntity;
 import com.jmreisswitz.aegromini.domain.Production;
@@ -13,7 +14,7 @@ import java.util.Optional;
 @AllArgsConstructor
 public class ProductionRepositoryImpl implements ProductionRepository {
     private final ProductionMongoRepository productionMongoRepository;
-    private final ProductionRepositoryConverter entityConverter;
+    private final EntityConverter<ProductionEntity, Production> entityConverter;
 
     @Override
     public Production save(Production production) {
