@@ -11,6 +11,9 @@ import com.jmreisswitz.aegromini.adapters.persistence.repository.ProductionRepos
 import com.jmreisswitz.aegromini.domain.Production;
 import com.jmreisswitz.aegromini.ports.repository.ProductionRepository;
 import com.jmreisswitz.aegromini.usecases.production.AddProductionUseCase;
+import com.jmreisswitz.aegromini.usecases.production.DeleteProductionUseCase;
+import com.jmreisswitz.aegromini.usecases.production.GetProductionByFarmIdUseCase;
+import com.jmreisswitz.aegromini.usecases.production.GetProductionByFieldIdUseCase;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -38,5 +41,20 @@ public class ProductionConfiguration {
     @Bean
     AddProductionUseCase addProductionUseCase() {
         return new AddProductionUseCase(productionRepository());
+    }
+
+    @Bean
+    GetProductionByFieldIdUseCase getProductionByFieldIdUseCase() {
+        return new GetProductionByFieldIdUseCase(productionRepository(), entityConverter());
+    }
+
+    @Bean
+    GetProductionByFarmIdUseCase getProductionByFarmIdUseCase() {
+        return new GetProductionByFarmIdUseCase(productionRepository());
+    }
+
+    @Bean
+    DeleteProductionUseCase deleteProductionUseCase() {
+        return new DeleteProductionUseCase(productionRepository());
     }
 }
