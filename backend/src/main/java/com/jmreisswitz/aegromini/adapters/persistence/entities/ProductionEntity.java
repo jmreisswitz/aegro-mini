@@ -10,7 +10,7 @@ import java.io.Serializable;
 @Data
 @AllArgsConstructor
 @Document("production")
-public class ProductionEntity implements Serializable {
+public class ProductionEntity extends AbstractAuditingEntity implements Serializable {
     String id;
     @NonNull String fieldId;
     String productionType;
