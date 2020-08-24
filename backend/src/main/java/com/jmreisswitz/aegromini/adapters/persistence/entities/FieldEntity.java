@@ -13,7 +13,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 @Data
 @Document("fields")
-public class FieldEntity implements Serializable {
+public class FieldEntity extends AbstractAuditingEntity implements Serializable {
     @Id
     @GeneratedValue
     private String id;

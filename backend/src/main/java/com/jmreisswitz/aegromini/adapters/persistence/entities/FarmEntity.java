@@ -1,6 +1,5 @@
 package com.jmreisswitz.aegromini.adapters.persistence.entities;
 
-import com.jmreisswitz.aegromini.domain.Field;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,14 +14,11 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 @Document(collection="farms")
-public class FarmEntity implements Serializable {
+public class FarmEntity extends AbstractAuditingEntity implements Serializable {
     @Id
     @GeneratedValue()
     private String id;
 
     @NonNull
     private String name;
-
-//    @OneToMany(mappedBy = "fields")
-//    private Field fields;
 }
