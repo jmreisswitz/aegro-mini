@@ -15,11 +15,11 @@ import org.springframework.data.mongodb.core.mapping.Field;
 public class AbstractAuditingEntity {
     @CreatedDate
     @Field("created_date")
-    @JsonIgnore
+//    @JsonIgnore
     private DateTime createdDate;
 
     @LastModifiedDate
     @Field("last_modified_date")
-    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
+//    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private DateTime lastModifiedDate = DateTime.now();
 }
