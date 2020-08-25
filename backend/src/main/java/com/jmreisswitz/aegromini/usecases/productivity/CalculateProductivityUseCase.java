@@ -1,4 +1,4 @@
-package com.jmreisswitz.aegromini.usecases.production;
+package com.jmreisswitz.aegromini.usecases.productivity;
 
 import com.jmreisswitz.aegromini.domain.Production;
 import com.jmreisswitz.aegromini.domain.Productivity;
@@ -19,7 +19,7 @@ public class CalculateProductivityUseCase {
         List<Productivity> productivityList = new LinkedList<>();
         for (Map.Entry<String, Double> productionType : productionMap.entrySet()) {
             productivityList.add(
-                    new Productivity(productionType.getKey(), productionType.getValue()/ totalArea);
+                    new Productivity(productionType.getKey(), productionType.getValue()/ totalArea));
         }
         return productivityList;
     }

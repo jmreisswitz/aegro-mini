@@ -12,14 +12,16 @@ import com.jmreisswitz.aegromini.usecases.field.AddFieldUseCase;
 import com.jmreisswitz.aegromini.usecases.field.DeleteFieldByIdUseCase;
 import com.jmreisswitz.aegromini.usecases.field.GetFieldByIdUseCase;
 import com.jmreisswitz.aegromini.usecases.field.GetFieldsByFarmIdUseCase;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class FieldConfiguration {
-    @Autowired
-    private FieldMongoRepository fieldMongoRepository;
+    private final FieldMongoRepository fieldMongoRepository;
+
+    public FieldConfiguration(FieldMongoRepository fieldMongoRepository) {
+        this.fieldMongoRepository = fieldMongoRepository;
+    }
 
     @Bean
     FieldRepositoryConverter createFieldRepositoryConverter() {
