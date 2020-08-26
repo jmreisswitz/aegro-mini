@@ -3,6 +3,8 @@ import {FieldService} from "../../../core/services/field.service";
 import {Field} from "../../../core/models/field";
 import {ActivatedRoute} from "@angular/router";
 import { Location } from '@angular/common';
+import {ProductivityService} from "../../../core/services/productivity.service";
+import {Productivity} from "../../../core/models/productivity";
 
 @Component({
   selector: 'app-field-detail',
@@ -12,11 +14,13 @@ import { Location } from '@angular/common';
 export class FieldDetailComponent implements OnInit {
 
   field: Field;
+  productivity: Productivity[] = [];
   fieldId: string;
 
   constructor(
     private route: ActivatedRoute,
     private fieldService: FieldService,
+    private productivityService: ProductivityService,
     private location: Location
   ) { }
 
@@ -35,6 +39,12 @@ export class FieldDetailComponent implements OnInit {
     this.fieldService.deleteField(this.fieldId)
       .subscribe();
     this.goBack();
+  }
+
+  calculateProductivity(): void {
+    this.fieldId = this.route.snapshot.paramMap.get('id');
+    this.productivityService.getByFieldId(this.fieldId)
+      .subscribe(productivity => this.productivity = productivity['data']);
   }
 
   goBack() {

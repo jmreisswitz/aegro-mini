@@ -3,12 +3,22 @@
   <div class="field-details">
     <span>Area: {{field.area}}</span>
   </div>
-  <span><br><br></span>
+  <span><br></span>
 </div>
 <div>
   <h3 class="page-header"> Productions: </h3>
   <app-productions [fieldId]="fieldId"></app-productions>
 </div>
+
+<div class="panel-body">
+  <button (click)="calculateProductivity()" class="btn btn-success">
+    Calculate Productivity
+  </button>
+  <div *ngFor="let prod of productivity">
+    <span>{{prod.productivityAmount}} of {{prod.productionType}}</span>
+  </div>
+</div>
+
 <div class="delete-button-container">
   <button class="btn btn-danger" (click)="deleteField()">
     Delete Field

@@ -10,6 +10,7 @@ import { FieldDetailComponent } from './modules/components/field-detail/field-de
 import { FieldsComponent } from './modules/components/fields/fields.component';
 import { ProductionsComponent } from './modules/components/productions/productions.component';
 import { ProductionDetailComponent } from './modules/components/production-detail/production-detail.component';
+import { ProductivityComponent } from './modules/components/productivity/productivity.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { ProductionDetailComponent } from './modules/components/production-detai
     FieldDetailComponent,
     FieldsComponent,
     ProductionsComponent,
-    ProductionDetailComponent
+    ProductionDetailComponent,
+    ProductivityComponent
   ],
   imports: [
     BrowserModule,
