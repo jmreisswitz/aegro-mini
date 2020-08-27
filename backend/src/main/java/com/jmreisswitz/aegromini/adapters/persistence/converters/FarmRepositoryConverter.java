@@ -13,6 +13,6 @@ public class FarmRepositoryConverter implements EntityConverter<FarmEntity, Farm
 
     @Override
     public Farm mapToDomain(FarmEntity entityObject) {
-        return new Farm(entityObject.getId(), entityObject.getName(), new LinkedList<>());
+        return new Farm(entityObject.getId(), entityObject.getName());
     }
 }

@@ -94,8 +94,8 @@ class FarmControllerTest {
             "and return status ok")
     void save_allGood_shouldReturnHttpCreated() throws Exception {
         String farmName = RandomStringUtils.randomAlphanumeric(10);
-        FarmRest farmRest = new FarmRest(null, farmName, null);
-        Farm savedFarm = new Farm(fakeFarmId, farmName, null);
+        FarmRest farmRest = new FarmRest(null, farmName);
+        Farm savedFarm = new Farm(fakeFarmId, farmName);
         when(addFarmUseCase.execute(restConverter.mapToDomain(farmRest))).thenReturn(savedFarm);
 
         mockMvc.perform(MockMvcRequestBuilders.post("/aegro_mini/farm")
@@ -108,7 +108,7 @@ class FarmControllerTest {
     @DisplayName("Given a json with empty name" +
             "should return bad request")
     void save_emptyName_shouldReturnBadRequest() throws Exception{
-        FarmRest farmRest = new FarmRest(null, "", null);
+        FarmRest farmRest = new FarmRest(null, "");
         mockMvc.perform(MockMvcRequestBuilders.post("/aegro_mini/farm")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(farmRest)))
@@ -118,7 +118,7 @@ class FarmControllerTest {
     @Test
     void getAll_allGood_shouldReturnHttp200() throws Exception {
         LinkedList<Farm> farms = new LinkedList<>();
-        farms.add(new Farm(fakeFarmId, "name", null));
+        farms.add(new Farm(fakeFarmId, "name"));
         when(getAllFarmsUseCase.execute()).thenReturn(farms);
 
         mockMvc.perform(MockMvcRequestBuilders
@@ -132,7 +132,7 @@ class FarmControllerTest {
             "should return http 200")
     void getById_allGood_shouldReturnHttp200() throws Exception {
         // Arrange
-        Farm farm = new Farm(fakeFarmId, RandomStringUtils.randomAlphanumeric(10), null);
+        Farm farm = new Farm(fakeFarmId, RandomStringUtils.randomAlphanumeric(10));
         when(getFarmByIdUseCase.execute(fakeFarmId)).thenReturn(Optional.of(farm));
 
         // Act and Assert

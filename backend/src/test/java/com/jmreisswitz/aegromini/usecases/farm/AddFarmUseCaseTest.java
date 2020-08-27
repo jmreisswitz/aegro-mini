@@ -37,9 +37,9 @@ class AddFarmUseCaseTest {
     void save_allGood_shouldPass() {
         // Arrange
         String farmName = RandomStringUtils.randomAlphanumeric(10);
-        Farm farm = new Farm(null, farmName, null);
+        Farm farm = new Farm(null, farmName);
         String fakeGeneratedId = RandomStringUtils.randomAlphabetic(10);
-        Answer<Farm> repositoryAnswer = invocation -> new Farm(fakeGeneratedId, farmName, null);
+        Answer<Farm> repositoryAnswer = invocation -> new Farm(fakeGeneratedId, farmName);
         when(farmRepository.save(farm)).thenAnswer(repositoryAnswer);
 
         // Act
@@ -65,6 +65,16 @@ class AddFarmUseCaseTest {
         assertThrows(IllegalArgumentException.class,
                 () -> {addFarmUseCase.execute(null);}
         );
+    }
+
+    @Test
+    @DisplayName("Given a farm with a empty name" +
+            "should throw IllegalArgumentException")
+    void save_emptyName_shouldThrowIllegalArgumentException() {
+        Farm farm = new Farm(null, "");
+        assertThrows(IllegalArgumentException.class,
+                () -> {addFarmUseCase.execute(farm);
+        });
     }
 
 }

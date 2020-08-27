@@ -24,20 +24,12 @@ class GetFarmByIdUseCaseTest {
     @Mock
     private FarmRepository farmRepository;
 
-    @Mock
-    private GetFieldsByFarmIdUseCase getFieldsByFarmIdUseCase;
-
     private GetFarmByIdUseCase getFarmByIdUseCase;
 
     @BeforeEach
     void setUp() {
         MockitoAnnotations.initMocks(this);
-        getFarmByIdUseCase = spy(new GetFarmByIdUseCase(farmRepository, getFieldsByFarmIdUseCase));
-    }
-
-    @AfterEach
-    void tearDown() {
-        getFieldsByFarmIdUseCase = null;
+        getFarmByIdUseCase = spy(new GetFarmByIdUseCase(farmRepository));
     }
 
     @Test
@@ -48,10 +40,8 @@ class GetFarmByIdUseCaseTest {
         // Arrange
         String fakeId = RandomStringUtils.randomAlphanumeric(10);
         String farmName = RandomStringUtils.randomAlphanumeric(10);
-        LinkedList<Field> fields = new LinkedList<>();
-        Farm farm = new Farm(fakeId, farmName, null);
+        Farm farm = new Farm(fakeId, farmName);
 
-        when(getFieldsByFarmIdUseCase.execute(farm.getId())).thenReturn(fields);
         when(farmRepository.findOneById(farm.getId())).thenReturn(Optional.of(farm));
 
         // Act

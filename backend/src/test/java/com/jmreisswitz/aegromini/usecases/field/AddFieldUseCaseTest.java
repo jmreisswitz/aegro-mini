@@ -51,7 +51,7 @@ class AddFieldUseCaseTest {
         String fieldName = RandomStringUtils.randomAlphanumeric(10);
         Field field = new Field(null, fakeFarmId, fieldName, 1);
         Answer<Field> repositoryAnswer = invocation -> new Field(fakeFieldId, fakeFarmId, fieldName, 1);
-        Farm farm = new Farm(fakeFarmId, RandomStringUtils.randomAlphanumeric(10), null);
+        Farm farm = new Farm(fakeFarmId, RandomStringUtils.randomAlphanumeric(10));
         when(fieldRepository.save(field)).thenAnswer(repositoryAnswer);
         when(getFarmByIdUseCase.execute(fakeFarmId)).thenReturn(Optional.of(farm));
 

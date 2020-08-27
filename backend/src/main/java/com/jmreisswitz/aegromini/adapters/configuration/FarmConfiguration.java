@@ -7,17 +7,15 @@ import com.jmreisswitz.aegromini.adapters.persistence.repository.FarmRepositoryI
 import com.jmreisswitz.aegromini.ports.repository.FarmRepository;
 import com.jmreisswitz.aegromini.usecases.farm.*;
 import com.jmreisswitz.aegromini.usecases.field.GetFieldsByFarmIdUseCase;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+@AllArgsConstructor
 @Configuration
 public class FarmConfiguration {
-    @Autowired
-    private FarmMongoRepository farmMongoRepository;
-
-    @Autowired
-    private GetFieldsByFarmIdUseCase getFieldsByFarmIdUseCase;
+    private final FarmMongoRepository farmMongoRepository;
 
     @Bean
     public FarmRepositoryConverter createFarmRepositoryConverter(){
@@ -31,7 +29,7 @@ public class FarmConfiguration {
 
     @Bean
     public GetFarmByIdUseCase createGetFarmByIdUseCase() {
-        return new GetFarmByIdUseCase(createFarmRepository(), getFieldsByFarmIdUseCase);
+        return new GetFarmByIdUseCase(createFarmRepository());
     }
 
     @Bean

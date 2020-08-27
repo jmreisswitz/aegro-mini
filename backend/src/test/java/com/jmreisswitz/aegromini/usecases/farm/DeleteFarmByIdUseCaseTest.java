@@ -49,7 +49,7 @@ class DeleteFarmByIdUseCaseTest {
     void execute_allGood_shouldPass() throws FieldNotFoundException {
         // Arrange
 
-        Farm farm = new Farm(fakeId, RandomStringUtils.randomAlphanumeric(10), null);
+        Farm farm = new Farm(fakeId, RandomStringUtils.randomAlphanumeric(10));
         when(farmRepository.findOneById(fakeId)).thenReturn(Optional.of(farm));
         doNothing().when(deleteAllFieldsByFarmIdUseCase).execute(fakeId);
 

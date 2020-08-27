@@ -1,15 +1,14 @@
 package com.jmreisswitz.aegromini.adapters.delivery.rest;
 
 
-import com.jmreisswitz.aegromini.domain.Field;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
-import java.util.List;
 
 
 @Data
@@ -17,8 +16,7 @@ import java.util.List;
 @NoArgsConstructor
 public class FarmRest implements Serializable {
     private String id;
-    @NonNull
-    @NotBlank
+
+    @NonNull @NotBlank @NotEmpty
     private String name;
-    private List<Field> fields;
 }

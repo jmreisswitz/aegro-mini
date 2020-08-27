@@ -2,14 +2,17 @@ package com.jmreisswitz.aegromini.domain;
 
 import lombok.*;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
-import java.util.List;
 
+@EqualsAndHashCode(callSuper = false)
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
-public class Farm implements Serializable {
+public class Farm extends ValidatorBaseClass implements Serializable {
+
     private String id;
-    @NonNull private String name;
-    private List<Field> fields;
+
+    @NonNull @NotEmpty @NotBlank
+    private String name;
 }
