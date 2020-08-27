@@ -8,17 +8,17 @@ import com.jmreisswitz.aegromini.adapters.persistence.repository.FieldMongoRepos
 import com.jmreisswitz.aegromini.adapters.persistence.repository.FieldRepositoryImpl;
 import com.jmreisswitz.aegromini.domain.Field;
 import com.jmreisswitz.aegromini.ports.repository.FieldRepository;
+import com.jmreisswitz.aegromini.usecases.farm.GetFarmByIdUseCase;
 import com.jmreisswitz.aegromini.usecases.field.*;
+import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+@AllArgsConstructor
 @Configuration
 public class FieldConfiguration {
     private final FieldMongoRepository fieldMongoRepository;
-
-    public FieldConfiguration(FieldMongoRepository fieldMongoRepository) {
-        this.fieldMongoRepository = fieldMongoRepository;
-    }
+    private final GetFarmByIdUseCase getFarmByIdUseCase;
 
     @Bean
     FieldRepositoryConverter createFieldRepositoryConverter() {
@@ -37,7 +37,7 @@ public class FieldConfiguration {
 
     @Bean
     AddFieldUseCase createAddFieldUseCase() {
-        return new AddFieldUseCase(createFieldRepository());
+        return new AddFieldUseCase(createFieldRepository(), getFarmByIdUseCase);
     }
 
     @Bean

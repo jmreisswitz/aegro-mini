@@ -14,11 +14,13 @@ import java.io.Serializable;
 @Data
 @AllArgsConstructor
 public class Field extends ValidatorBaseClass implements Serializable {
+
     private String id;
+
     @NonNull
     private String farmId;
 
-    @NotEmpty @NotBlank
+    @NonNull @NotEmpty @NotBlank
     private String name;
 
     @NonNull @Positive
