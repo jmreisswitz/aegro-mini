@@ -14,4 +14,8 @@ export class ProductivityService {
   getByFieldId(fieldId: string) : Observable<Productivity[]> {
     return this.http.get<Productivity[]>(this.productivityUrl + 'field_id/' + fieldId );
   }
+
+  getByFarmId(farmId: string): Observable<Productivity[]> {
+    return this.http.get<Productivity[]>(this.productivityUrl + 'farm_id/' + farmId);
+  }
 }

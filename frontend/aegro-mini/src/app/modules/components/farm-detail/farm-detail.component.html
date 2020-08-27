@@ -2,6 +2,14 @@
   <h2 class="page-header">Farm {{farm.name}}</h2>
   <app-fields [farmId]="farmId"></app-fields>
 </div>
+<div class="panel-body">
+  <button (click)="calculateProductivity()" class="btn btn-success">
+    Calculate Productivity
+  </button>
+  <div *ngFor="let prod of productivityList">
+    <span>{{prod.productivityAmount}} of {{prod.productionType}}</span>
+  </div>
+</div>
 <div class="delete-button-container">
   <button class="btn btn-danger" (click)="deleteFarm()">Delete this farm</button>
 </div>

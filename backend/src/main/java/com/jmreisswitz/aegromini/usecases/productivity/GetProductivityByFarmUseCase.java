@@ -1,4 +1,4 @@
-package com.jmreisswitz.aegromini.usecases.farm;
+package com.jmreisswitz.aegromini.usecases.productivity;
 
 import com.jmreisswitz.aegromini.domain.Farm;
 import com.jmreisswitz.aegromini.domain.Field;
@@ -7,7 +7,6 @@ import com.jmreisswitz.aegromini.domain.Productivity;
 import com.jmreisswitz.aegromini.usecases.exceptions.FarmHasNoFieldsException;
 import com.jmreisswitz.aegromini.usecases.field.GetFieldsByFarmIdUseCase;
 import com.jmreisswitz.aegromini.usecases.production.GetProductionByFieldIdUseCase;
-import com.jmreisswitz.aegromini.usecases.productivity.CalculateProductivityUseCase;
 import lombok.AllArgsConstructor;
 
 import java.util.LinkedList;

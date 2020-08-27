@@ -1,9 +1,8 @@
-package com.jmreisswitz.aegromini.usecases.field;
+package com.jmreisswitz.aegromini.usecases.productivity;
 
 import com.jmreisswitz.aegromini.domain.Field;
 import com.jmreisswitz.aegromini.domain.Production;
 import com.jmreisswitz.aegromini.domain.Productivity;
-import com.jmreisswitz.aegromini.usecases.productivity.CalculateProductivityUseCase;
 import com.jmreisswitz.aegromini.usecases.production.GetProductionByFieldIdUseCase;
 import lombok.AllArgsConstructor;
 

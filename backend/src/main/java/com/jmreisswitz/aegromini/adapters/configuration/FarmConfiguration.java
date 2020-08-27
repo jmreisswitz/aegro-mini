@@ -5,15 +5,11 @@ import com.jmreisswitz.aegromini.adapters.persistence.converters.FarmRepositoryC
 import com.jmreisswitz.aegromini.adapters.persistence.repository.FarmMongoRepository;
 import com.jmreisswitz.aegromini.adapters.persistence.repository.FarmRepositoryImpl;
 import com.jmreisswitz.aegromini.ports.repository.FarmRepository;
-import com.jmreisswitz.aegromini.usecases.farm.AddFarmUseCase;
-import com.jmreisswitz.aegromini.usecases.farm.DeleteFarmByIdUseCase;
-import com.jmreisswitz.aegromini.usecases.farm.GetAllFarmsUseCase;
-import com.jmreisswitz.aegromini.usecases.farm.GetFarmByIdUseCase;
+import com.jmreisswitz.aegromini.usecases.farm.*;
 import com.jmreisswitz.aegromini.usecases.field.GetFieldsByFarmIdUseCase;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.data.mongodb.config.EnableMongoAuditing;
 
 @Configuration
 public class FarmConfiguration {
