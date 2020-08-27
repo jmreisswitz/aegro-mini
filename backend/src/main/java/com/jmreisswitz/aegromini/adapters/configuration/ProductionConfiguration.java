@@ -10,15 +10,17 @@ import com.jmreisswitz.aegromini.adapters.persistence.repository.ProductionMongo
 import com.jmreisswitz.aegromini.adapters.persistence.repository.ProductionRepositoryImpl;
 import com.jmreisswitz.aegromini.domain.Production;
 import com.jmreisswitz.aegromini.ports.repository.ProductionRepository;
+import com.jmreisswitz.aegromini.usecases.field.GetFieldByIdUseCase;
 import com.jmreisswitz.aegromini.usecases.production.*;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+@AllArgsConstructor
 @Configuration
 public class ProductionConfiguration {
-    @Autowired
-    ProductionMongoRepository productionMongoRepository;
+    final ProductionMongoRepository productionMongoRepository;
+    final GetFieldByIdUseCase getFieldByIdUseCase;
 
     @Bean
     RestConverter<ProductionRest, Production> restConverter() {
@@ -37,7 +39,7 @@ public class ProductionConfiguration {
 
     @Bean
     AddProductionUseCase addProductionUseCase() {
-        return new AddProductionUseCase(productionRepository());
+        return new AddProductionUseCase(productionRepository(), getFieldByIdUseCase);
     }
 
     @Bean

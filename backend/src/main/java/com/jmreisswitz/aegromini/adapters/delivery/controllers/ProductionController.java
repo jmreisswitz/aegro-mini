@@ -4,6 +4,7 @@ import com.jmreisswitz.aegromini.adapters.delivery.converters.RestConverter;
 import com.jmreisswitz.aegromini.adapters.delivery.response.RestResponse;
 import com.jmreisswitz.aegromini.adapters.delivery.rest.ProductionRest;
 import com.jmreisswitz.aegromini.domain.Production;
+import com.jmreisswitz.aegromini.usecases.exceptions.FieldNotFoundException;
 import com.jmreisswitz.aegromini.usecases.exceptions.ProductionNotFoundException;
 import com.jmreisswitz.aegromini.usecases.production.AddProductionUseCase;
 import com.jmreisswitz.aegromini.usecases.production.DeleteProductionUseCase;
@@ -14,7 +15,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -31,7 +31,7 @@ public class ProductionController {
 
     @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping
-    public RestResponse<ProductionRest> save(@Valid @RequestBody ProductionRest productionRest){
+    public RestResponse<ProductionRest> save(@Valid @RequestBody ProductionRest productionRest) throws FieldNotFoundException {
         Production production = restConverter.mapToDomain(productionRest);
         ProductionRest productionRestResponse = restConverter.mapToRest(addProductionUseCase.execute(production));
         return new RestResponse<>(HttpStatus.CREATED, "Production created with success", productionRestResponse);
