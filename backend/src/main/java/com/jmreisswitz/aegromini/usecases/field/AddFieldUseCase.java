@@ -4,6 +4,7 @@ import com.jmreisswitz.aegromini.domain.Field;
 import com.jmreisswitz.aegromini.ports.repository.FieldRepository;
 import lombok.AllArgsConstructor;
 
+
 @AllArgsConstructor
 public class AddFieldUseCase {
     private final FieldRepository fieldRepository;
@@ -12,6 +13,7 @@ public class AddFieldUseCase {
         if (field == null){
             throw new IllegalArgumentException("field is null");
         }
+        field.checkIfValid();
         return fieldRepository.save(field);
     }
 }

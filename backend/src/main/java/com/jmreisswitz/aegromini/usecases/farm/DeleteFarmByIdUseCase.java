@@ -16,6 +16,7 @@ public class DeleteFarmByIdUseCase {
         if (farmToDelete.isEmpty()){
             throw new FarmNotFoundException("Cant find farm with id " + farmId);
         }
+
         farmRepository.delete(farmId);
     }
 

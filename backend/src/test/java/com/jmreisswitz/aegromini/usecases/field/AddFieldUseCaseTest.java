@@ -66,4 +66,39 @@ class AddFieldUseCaseTest {
         });
     }
 
+    @Test
+    void execute_areaZero_shouldThrowIllegalArgumentException() {
+        String fieldName = RandomStringUtils.randomAlphanumeric(10);
+        Field field = new Field(null, fakeFarmId, fieldName, 0);
+        assertThrows(IllegalArgumentException.class, () -> {
+            addFieldUseCase.execute(field);
+        });
+    }
+
+    @Test
+    void execute_areaNegative_shouldThrowIllegalArgumentException() {
+        String fieldName = RandomStringUtils.randomAlphanumeric(10);
+        Field field = new Field(null, fakeFarmId, fieldName, -1.0);
+        assertThrows(IllegalArgumentException.class, () -> {
+            addFieldUseCase.execute(field);
+        });
+    }
+
+    @Test
+    void execute_emptyName_shouldThrowIllegalArgumentException() {
+        Field field = new Field(null, fakeFarmId, "", 1.0);
+        assertThrows(IllegalArgumentException.class, () -> {
+            addFieldUseCase.execute(field);
+        });
+    }
+
+    @Test
+    void execute_blankName_shouldThrowIllegalArgumentException() {
+        Field field = new Field(null, fakeFarmId, "      ", 1.0);
+        assertThrows(IllegalArgumentException.class, () -> {
+            addFieldUseCase.execute(field);
+        });
+    }
+
+
 }

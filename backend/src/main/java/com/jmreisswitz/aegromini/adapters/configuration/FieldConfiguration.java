@@ -8,10 +8,7 @@ import com.jmreisswitz.aegromini.adapters.persistence.repository.FieldMongoRepos
 import com.jmreisswitz.aegromini.adapters.persistence.repository.FieldRepositoryImpl;
 import com.jmreisswitz.aegromini.domain.Field;
 import com.jmreisswitz.aegromini.ports.repository.FieldRepository;
-import com.jmreisswitz.aegromini.usecases.field.AddFieldUseCase;
-import com.jmreisswitz.aegromini.usecases.field.DeleteFieldByIdUseCase;
-import com.jmreisswitz.aegromini.usecases.field.GetFieldByIdUseCase;
-import com.jmreisswitz.aegromini.usecases.field.GetFieldsByFarmIdUseCase;
+import com.jmreisswitz.aegromini.usecases.field.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -56,4 +53,8 @@ public class FieldConfiguration {
         return new DeleteFieldByIdUseCase(createFieldRepository());
     }
 
+    @Bean
+    public DeleteAllFieldsByFarmIdUseCase createDeleteAllFieldsByFarmIdUseCase() {
+        return new DeleteAllFieldsByFarmIdUseCase(createGetFieldsByFarmIdUseCase(), createDeleteFieldByIdUseCase());
+    }
 }
