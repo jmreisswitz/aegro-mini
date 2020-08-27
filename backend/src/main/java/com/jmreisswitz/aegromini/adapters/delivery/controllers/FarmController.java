@@ -4,6 +4,8 @@ import com.jmreisswitz.aegromini.adapters.delivery.converters.RestConverter;
 import com.jmreisswitz.aegromini.adapters.delivery.response.RestResponse;
 import com.jmreisswitz.aegromini.adapters.delivery.rest.FarmRest;
 import com.jmreisswitz.aegromini.domain.Farm;
+import com.jmreisswitz.aegromini.usecases.exceptions.FieldNotFoundException;
+import com.jmreisswitz.aegromini.usecases.exceptions.ProductionNotFoundException;
 import com.jmreisswitz.aegromini.usecases.farm.AddFarmUseCase;
 import com.jmreisswitz.aegromini.usecases.farm.DeleteFarmByIdUseCase;
 import com.jmreisswitz.aegromini.usecases.farm.GetAllFarmsUseCase;
@@ -53,7 +55,7 @@ public class FarmController {
 
     @CrossOrigin(origins = "http://localhost:4200")
     @DeleteMapping("/{id}")
-    public RestResponse<Void> delete(@PathVariable String id){
+    public RestResponse<Void> delete(@PathVariable String id) throws FieldNotFoundException, ProductionNotFoundException {
         deleteFarmByIdUseCase.execute(id);
         return new RestResponse<>(HttpStatus.OK, "Farm removed with success.");
     }

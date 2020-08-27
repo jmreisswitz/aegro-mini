@@ -6,16 +6,20 @@ import com.jmreisswitz.aegromini.adapters.persistence.repository.FarmMongoReposi
 import com.jmreisswitz.aegromini.adapters.persistence.repository.FarmRepositoryImpl;
 import com.jmreisswitz.aegromini.ports.repository.FarmRepository;
 import com.jmreisswitz.aegromini.usecases.farm.*;
-import com.jmreisswitz.aegromini.usecases.field.GetFieldsByFarmIdUseCase;
+import com.jmreisswitz.aegromini.usecases.field.DeleteAllFieldsByFarmIdUseCase;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Lazy;
 
-@AllArgsConstructor
 @Configuration
 public class FarmConfiguration {
-    private final FarmMongoRepository farmMongoRepository;
+    @Autowired
+    private FarmMongoRepository farmMongoRepository;
+
+    @Autowired
+    private DeleteAllFieldsByFarmIdUseCase deleteAllFieldsByFarmIdUseCase;
 
     @Bean
     public FarmRepositoryConverter createFarmRepositoryConverter(){
@@ -37,8 +41,10 @@ public class FarmConfiguration {
         return new AddFarmUseCase(createFarmRepository());
     }
 
+    @Lazy
     @Bean
-    public DeleteFarmByIdUseCase createDeleteFarmByIdUseCase() { return new DeleteFarmByIdUseCase(createFarmRepository()); }
+    public DeleteFarmByIdUseCase createDeleteFarmByIdUseCase() {
+        return new DeleteFarmByIdUseCase(createFarmRepository(), deleteAllFieldsByFarmIdUseCase); }
 
     @Bean
     public FarmRestConverter createFarmRestConverter() {

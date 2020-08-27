@@ -59,6 +59,11 @@ public class ProductionConfiguration {
 
     @Bean
     DeleteProductionUseCase deleteProductionUseCase() {
-        return new DeleteProductionUseCase(productionRepository());
+        return new DeleteProductionUseCase(productionRepository(), getProductionByIdUseCase());
+    }
+
+    @Bean
+    DeleteAllProductionsByFieldIdUseCase deleteAllProductionsByFieldIdUseCase() {
+        return new DeleteAllProductionsByFieldIdUseCase(getProductionByFieldIdUseCase(), deleteProductionUseCase());
     }
 }

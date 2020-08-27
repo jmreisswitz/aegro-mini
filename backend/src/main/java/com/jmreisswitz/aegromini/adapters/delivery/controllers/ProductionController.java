@@ -55,7 +55,7 @@ public class ProductionController {
 
     @CrossOrigin(origins = "http://localhost:4200")
     @DeleteMapping("/{productionId}")
-    public RestResponse<Void> delete(@PathVariable String productionId){
+    public RestResponse<Void> delete(@PathVariable String productionId) throws ProductionNotFoundException {
         deleteProductionUseCase.execute(productionId);
         return new RestResponse<>(HttpStatus.OK, "Production deleted");
     }

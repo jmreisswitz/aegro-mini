@@ -10,15 +10,19 @@ import com.jmreisswitz.aegromini.domain.Field;
 import com.jmreisswitz.aegromini.ports.repository.FieldRepository;
 import com.jmreisswitz.aegromini.usecases.farm.GetFarmByIdUseCase;
 import com.jmreisswitz.aegromini.usecases.field.*;
-import lombok.AllArgsConstructor;
+import com.jmreisswitz.aegromini.usecases.production.DeleteAllProductionsByFieldIdUseCase;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-@AllArgsConstructor
 @Configuration
 public class FieldConfiguration {
-    private final FieldMongoRepository fieldMongoRepository;
-    private final GetFarmByIdUseCase getFarmByIdUseCase;
+    @Autowired
+    private FieldMongoRepository fieldMongoRepository;
+    @Autowired
+    private GetFarmByIdUseCase getFarmByIdUseCase;
+    @Autowired
+    private DeleteAllProductionsByFieldIdUseCase deleteAllProductionsByFieldIdUseCase;
 
     @Bean
     FieldRepositoryConverter createFieldRepositoryConverter() {
@@ -50,7 +54,7 @@ public class FieldConfiguration {
 
     @Bean
     public DeleteFieldByIdUseCase createDeleteFieldByIdUseCase() {
-        return new DeleteFieldByIdUseCase(createFieldRepository());
+        return new DeleteFieldByIdUseCase(createFieldRepository(), deleteAllProductionsByFieldIdUseCase);
     }
 
     @Bean

@@ -3,6 +3,8 @@ package com.jmreisswitz.aegromini.usecases.field;
 import com.jmreisswitz.aegromini.domain.Field;
 import com.jmreisswitz.aegromini.ports.repository.FieldRepository;
 import com.jmreisswitz.aegromini.usecases.exceptions.FieldNotFoundException;
+import com.jmreisswitz.aegromini.usecases.exceptions.ProductionNotFoundException;
+import com.jmreisswitz.aegromini.usecases.production.DeleteAllProductionsByFieldIdUseCase;
 import org.apache.commons.lang.RandomStringUtils;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -21,12 +23,15 @@ class DeleteFieldByFieldIdUseCaseTest {
     @Mock
     private FieldRepository fieldRepository;
 
+    @Mock
+    private DeleteAllProductionsByFieldIdUseCase deleteAllProductionsByFieldIdUseCase;
+
     private DeleteFieldByIdUseCase deleteFieldByIdUseCase;
 
     @BeforeEach
     void setUp() {
         MockitoAnnotations.initMocks(this);
-        deleteFieldByIdUseCase = spy(new DeleteFieldByIdUseCase(fieldRepository));
+        deleteFieldByIdUseCase = spy(new DeleteFieldByIdUseCase(fieldRepository, deleteAllProductionsByFieldIdUseCase));
     }
 
     @AfterEach
@@ -47,7 +52,7 @@ class DeleteFieldByFieldIdUseCaseTest {
         // Act
         try{
             deleteFieldByIdUseCase.execute(fakeId);
-        } catch (FieldNotFoundException ex){
+        } catch (FieldNotFoundException | ProductionNotFoundException ex){
             fail("FieldNotFoundException thrown");
         }
 

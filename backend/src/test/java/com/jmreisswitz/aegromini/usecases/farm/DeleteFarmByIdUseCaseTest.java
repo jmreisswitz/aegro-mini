@@ -4,6 +4,7 @@ import com.jmreisswitz.aegromini.domain.Farm;
 import com.jmreisswitz.aegromini.ports.repository.FarmRepository;
 import com.jmreisswitz.aegromini.usecases.exceptions.FarmNotFoundException;
 import com.jmreisswitz.aegromini.usecases.exceptions.FieldNotFoundException;
+import com.jmreisswitz.aegromini.usecases.exceptions.ProductionNotFoundException;
 import com.jmreisswitz.aegromini.usecases.field.DeleteAllFieldsByFarmIdUseCase;
 import org.apache.commons.lang.RandomStringUtils;
 import org.junit.jupiter.api.AfterEach;
@@ -12,7 +13,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.springframework.boot.test.mock.mockito.MockBean;
 
 import java.util.Optional;
 
@@ -34,7 +34,7 @@ class DeleteFarmByIdUseCaseTest {
     void setUp() {
         fakeId = RandomStringUtils.randomAlphanumeric(10);
         MockitoAnnotations.initMocks(this);
-        deleteFarmByIdUseCase = spy(new DeleteFarmByIdUseCase(farmRepository));
+        deleteFarmByIdUseCase = spy(new DeleteFarmByIdUseCase(farmRepository, deleteAllFieldsByFarmIdUseCase));
     }
 
     @AfterEach
@@ -46,7 +46,7 @@ class DeleteFarmByIdUseCaseTest {
     @DisplayName("Given an existing farm id" +
             "then should not throw FarmNotFoundException" +
             "should call farmRepository.delete")
-    void execute_allGood_shouldPass() throws FieldNotFoundException {
+    void execute_allGood_shouldPass() throws FieldNotFoundException, ProductionNotFoundException {
         // Arrange
 
         Farm farm = new Farm(fakeId, RandomStringUtils.randomAlphanumeric(10));

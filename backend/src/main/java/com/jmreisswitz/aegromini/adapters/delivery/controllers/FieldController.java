@@ -5,13 +5,13 @@ import com.jmreisswitz.aegromini.adapters.delivery.response.RestResponse;
 import com.jmreisswitz.aegromini.adapters.delivery.rest.FieldRest;
 import com.jmreisswitz.aegromini.domain.Field;
 import com.jmreisswitz.aegromini.usecases.exceptions.FieldNotFoundException;
+import com.jmreisswitz.aegromini.usecases.exceptions.ProductionNotFoundException;
 import com.jmreisswitz.aegromini.usecases.field.*;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -52,7 +52,7 @@ public class FieldController {
 
     @CrossOrigin(origins = "http://localhost:4200")
     @DeleteMapping("/{fieldId}")
-    public RestResponse<Void> delete(@PathVariable String fieldId) throws FieldNotFoundException {
+    public RestResponse<Void> delete(@PathVariable String fieldId) throws FieldNotFoundException, ProductionNotFoundException {
         deleteFieldByIdUseCase.execute(fieldId);
         return new RestResponse<>(HttpStatus.OK, "Field deleted");
     }
