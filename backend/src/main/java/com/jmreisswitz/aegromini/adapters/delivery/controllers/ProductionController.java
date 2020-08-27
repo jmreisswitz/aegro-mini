@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @AllArgsConstructor
 @RestController
@@ -47,10 +48,8 @@ public class ProductionController {
     @GetMapping("/field_id/{fieldId}")
     public RestResponse<List<ProductionRest>> getByFieldId(@PathVariable String fieldId){
         List<Production> productionList = getProductionByFieldIdUseCase.execute(fieldId);
-        List<ProductionRest> productionRestList = new LinkedList<>();
-        for (Production production : productionList){
-            productionRestList.add(restConverter.mapToRest(production));
-        }
+        List<ProductionRest> productionRestList = productionList.stream()
+                .map(restConverter::mapToRest).collect(Collectors.toList());
         return new RestResponse<>(HttpStatus.OK, null, productionRestList);
     }
 

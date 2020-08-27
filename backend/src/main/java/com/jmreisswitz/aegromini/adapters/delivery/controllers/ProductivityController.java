@@ -37,10 +37,8 @@ public class ProductivityController {
             throws FieldNotFoundException {
         Optional<Field> field = getFieldByIdUseCase.execute(fieldId);
         List<Productivity> productivityList = getProductivityByFieldUseCase.execute(field.get());
-        List<ProductivityRest> productivityRestList = new LinkedList<>();
-        for (Productivity productivity: productivityList){
-            productivityRestList.add(productivityRestConverter.mapToRest(productivity));
-        }
+        List<ProductivityRest> productivityRestList = productivityList.stream()
+                .map(productivityRestConverter::mapToRest).collect(Collectors.toList());
         return new RestResponse<>(HttpStatus.OK, null, productivityRestList);
     }
 

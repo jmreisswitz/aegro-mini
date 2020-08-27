@@ -6,9 +6,9 @@ import com.jmreisswitz.aegromini.domain.Field;
 import com.jmreisswitz.aegromini.ports.repository.FieldRepository;
 import lombok.AllArgsConstructor;
 
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 
 @AllArgsConstructor
@@ -25,11 +25,7 @@ public class FieldRepositoryImpl implements FieldRepository {
     @Override
     public List<Field> listAllByFarmId(String farmId) {
         List<FieldEntity> fieldEntityList = fieldMongoRepository.getByFarmId(farmId);
-        List<Field> fieldsList = new LinkedList<>();
-        for (FieldEntity field : fieldEntityList){
-            fieldsList.add(fieldRepositoryConverter.mapToDomain(field));
-        }
-        return fieldsList;
+        return fieldEntityList.stream().map(fieldRepositoryConverter::mapToDomain).collect(Collectors.toList());
     }
 
     @Override

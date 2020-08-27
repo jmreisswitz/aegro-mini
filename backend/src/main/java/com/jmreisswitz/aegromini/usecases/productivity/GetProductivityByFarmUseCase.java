@@ -9,7 +9,7 @@ import com.jmreisswitz.aegromini.usecases.field.GetFieldsByFarmIdUseCase;
 import com.jmreisswitz.aegromini.usecases.production.GetProductionByFieldIdUseCase;
 import lombok.AllArgsConstructor;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
 
 @AllArgsConstructor
@@ -30,11 +30,10 @@ public class GetProductivityByFarmUseCase {
     }
 
     private List<Production> getProductionListFromFields(List<Field> fieldList) {
-        List<Production> productionList = new LinkedList<>();
+        List<Production> productionList = new ArrayList<>();
         for (Field field : fieldList) {
             productionList.addAll(getProductionByFieldIdUseCase.execute(field.getId()));
         }
         return productionList;
     }
-
 }

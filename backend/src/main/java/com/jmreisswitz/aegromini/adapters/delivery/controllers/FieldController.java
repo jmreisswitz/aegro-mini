@@ -14,6 +14,7 @@ import javax.validation.Valid;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @RestController
 @AllArgsConstructor
@@ -44,11 +45,8 @@ public class FieldController {
     @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/byfarm/{farmId}")
     public RestResponse<List<FieldRest>> getByFarmId(@PathVariable String farmId){
-        List<Field> fields = getFieldsByFarmIdUseCase.execute(farmId);
-        List<FieldRest> fieldsRest = new LinkedList<>();
-        for (Field field : fields){
-            fieldsRest.add(restConverter.mapToRest(field));
-        }
+        List<Field> fieldList = getFieldsByFarmIdUseCase.execute(farmId);
+        List<FieldRest> fieldsRest = fieldList.stream().map(restConverter::mapToRest).collect(Collectors.toList());
         return new RestResponse<>(HttpStatus.OK, null, fieldsRest);
     }
 

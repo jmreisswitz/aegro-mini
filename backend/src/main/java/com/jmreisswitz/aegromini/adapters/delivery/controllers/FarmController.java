@@ -13,9 +13,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @RestController
 @AllArgsConstructor
@@ -39,10 +39,7 @@ public class FarmController {
     @GetMapping("/farms")
     public RestResponse<List<FarmRest>> getAll() {
         List<Farm> farmList = getAllFarmsUseCase.execute();
-        LinkedList<FarmRest> farmRestList = new LinkedList<>();
-        for (Farm farm : farmList) {
-            farmRestList.add(restConverter.mapToRest(farm));
-        }
+        List<FarmRest> farmRestList = farmList.stream().map(restConverter::mapToRest).collect(Collectors.toList());
         return new RestResponse<>(HttpStatus.OK, null, farmRestList);
     }
 
