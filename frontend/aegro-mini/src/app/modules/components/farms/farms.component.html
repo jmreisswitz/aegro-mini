@@ -10,10 +10,10 @@
 </div>
 <div class="add-farm-button-container">
   <label>
-    <input #farmName/>
+    <input [(ngModel)]="newFarmName"/>
   </label>
   <button class="btn btn-success"
-    (click)="addFarm(farmName.value); farmName.value=''">
+    (click)="addFarm(newFarmName); newFarmName=''" [disabled]="newFarmName.trim() === ''">
     Add Farm
   </button>
 </div>

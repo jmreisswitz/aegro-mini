@@ -11,6 +11,8 @@ export class FieldsComponent implements OnInit {
 
   @Input() farmId: string;
   fields: Field[] = [];
+  newFieldArea: number = 0;
+  newFieldName: string = '';
 
   constructor(
     private fieldService: FieldService

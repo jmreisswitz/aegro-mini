@@ -11,13 +11,15 @@
 </div>
 <div class="add-field-button-container">
   <label>
-    <input #fieldName/>
+    <input [(ngModel)]="newFieldName"/>
   </label>
   <label>
-    <input #fieldArea type="number"/>
+    <input [(ngModel)]="newFieldArea" type="number"/>
   </label>
   <button class="btn btn-success"
-          (click)="addField(fieldName.value, fieldArea.value); fieldName.value='';">
+          (click)="addField(newFieldName, newFieldArea); newFieldName=''; newFieldArea=0"
+          [disabled]="newFieldArea === 0 || newFieldName.trim() === ''"
+  >
     Add Field
   </button>
 </div>

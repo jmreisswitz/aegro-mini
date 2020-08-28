@@ -11,6 +11,7 @@ import { FarmService } from "../../../core/services/farm.service";
 export class FarmsComponent implements OnInit {
 
   farmList: Farm[] = [];
+  newFarmName: string = '';
 
   constructor(private farmService: FarmService) { }
 

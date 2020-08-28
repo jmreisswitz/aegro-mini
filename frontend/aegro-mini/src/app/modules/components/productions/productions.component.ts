@@ -11,6 +11,8 @@ export class ProductionsComponent implements OnInit {
 
   @Input() fieldId: string;
   productions: Production[] = [];
+  newProductionType: string = '';
+  newProductionAmount: number = 0;
 
   constructor(private productionService: ProductionService) { }
 

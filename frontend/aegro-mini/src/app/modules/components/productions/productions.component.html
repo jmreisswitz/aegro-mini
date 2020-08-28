@@ -11,14 +11,16 @@
 </div>
 <div class="add-production-button-container">
   <label>
-    <input #productionType/>
+    <input [(ngModel)]="newProductionType"/>
   </label>
   <label>
-    <input #productionAmount type="number"/>
+    <input [(ngModel)]="newProductionAmount" type="number"/>
   </label>
   <button class="btn btn-success"
-          (click)="addProduction(productionType.value, productionAmount.value);
-productionAmount.value=''; productionType.value=''">
+          (click)="addProduction(newProductionType, newProductionAmount);
+          newProductionAmount=0; newProductionType=''"
+          [disabled]="newProductionAmount === 0 || newProductionType.trim() === ''"
+  >
     Add Production
   </button>
 </div>

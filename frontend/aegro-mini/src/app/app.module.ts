@@ -10,6 +10,7 @@ import { FieldDetailComponent } from './modules/components/field-detail/field-de
 import { FieldsComponent } from './modules/components/fields/fields.component';
 import { ProductionsComponent } from './modules/components/productions/productions.component';
 import { ProductionDetailComponent } from './modules/components/production-detail/production-detail.component';
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { ProductionDetailComponent } from './modules/components/production-detai
   imports: [
     BrowserModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
