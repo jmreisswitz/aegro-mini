@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { FieldInMemoryService } from './field-in-memory.service';
+import { ErrorHandlingService } from './error-handling.service';
 
-describe('FieldInMemoryService', () => {
-  let service: FieldInMemoryService;
+describe('ErrorHandlingService', () => {
+  let service: ErrorHandlingService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(FieldInMemoryService);
+    service = TestBed.inject(ErrorHandlingService);
   });
 
   it('should be created', () => {

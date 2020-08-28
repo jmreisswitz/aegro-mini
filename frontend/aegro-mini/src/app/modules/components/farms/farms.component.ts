@@ -20,11 +20,11 @@ export class FarmsComponent implements OnInit {
 
   addFarm(name: string) {
     this.farmService.addFarm({name} as Farm)
-      .subscribe();
+      .subscribe(farm => this.farmList.push(farm['data']));
     this.getFarms();
   }
 
-  private getFarms(): void {
+  getFarms() {
     this.farmService.getFarms()
       .subscribe(farms => this.farmList = farms['data']);
   }
