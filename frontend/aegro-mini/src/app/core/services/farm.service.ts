@@ -4,13 +4,14 @@ import {Farm} from "../models/farm";
 import {Observable} from "rxjs";
 import {ErrorHandlingService} from "./error-handling.service";
 import {catchError} from "rxjs/operators";
+import {environment} from "../../../environments/environment";
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class FarmService {
-  private farmUrl: string = 'http://localhost:8081/aegro_mini/farm/';
+  private farmUrl: string = environment.apiUrl + 'aegro_mini/farm/';
 
   constructor(
     private http: HttpClient,

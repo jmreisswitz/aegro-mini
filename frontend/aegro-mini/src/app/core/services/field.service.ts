@@ -4,12 +4,13 @@ import {Observable} from "rxjs";
 import {Field} from "../models/field";
 import {ErrorHandlingService} from "./error-handling.service";
 import {catchError} from "rxjs/operators";
+import {environment} from "../../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
 })
 export class FieldService {
-  private fieldUrl: string = 'http://localhost:8081/aegro_mini/field/'
+  private fieldUrl: string = environment.apiUrl + 'aegro_mini/field/'
 
   constructor(
     private http: HttpClient,

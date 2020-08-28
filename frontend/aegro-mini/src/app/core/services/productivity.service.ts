@@ -4,12 +4,13 @@ import {Observable} from "rxjs";
 import {Productivity} from "../models/productivity";
 import {ErrorHandlingService} from "./error-handling.service";
 import {catchError} from "rxjs/operators";
+import {environment} from "../../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductivityService {
-  private productivityUrl: string = 'http://localhost:8081/aegro_mini/productivity/';
+  private productivityUrl: string = environment.apiUrl + 'aegro_mini/productivity/';
 
   constructor(
     private http: HttpClient,
