@@ -10,8 +10,8 @@ import java.util.List;
 @AllArgsConstructor
 public class DeleteAllFieldsByFarmIdUseCase {
 
-    public final GetFieldsByFarmIdUseCase getFieldsByFarmIdUseCase;
-    public final DeleteFieldByIdUseCase deleteFieldByIdUseCase;
+    private final GetFieldsByFarmIdUseCase getFieldsByFarmIdUseCase;
+    private final DeleteFieldByIdUseCase deleteFieldByIdUseCase;
 
     public void execute(String farmId) throws FieldNotFoundException, ProductionNotFoundException {
         List<Field> fieldList = getFieldsByFarmIdUseCase.execute(farmId);
