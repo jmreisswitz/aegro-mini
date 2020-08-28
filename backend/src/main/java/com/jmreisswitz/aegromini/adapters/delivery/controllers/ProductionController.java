@@ -29,7 +29,6 @@ public class ProductionController {
     private final GetProductionByFieldIdUseCase getProductionByFieldIdUseCase;
     private final DeleteProductionUseCase deleteProductionUseCase;
 
-    @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping
     public RestResponse<ProductionRest> save(@Valid @RequestBody ProductionRest productionRest) throws FieldNotFoundException {
         Production production = restConverter.mapToDomain(productionRest);
@@ -37,14 +36,12 @@ public class ProductionController {
         return new RestResponse<>(HttpStatus.CREATED, "Production created with success", productionRestResponse);
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/{productionId}")
     public RestResponse<ProductionRest> getById(@PathVariable String productionId) throws ProductionNotFoundException {
         Production production = getProductionByIdUseCase.execute(productionId);
         return new RestResponse<>(HttpStatus.OK, null, restConverter.mapToRest(production));
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/field_id/{fieldId}")
     public RestResponse<List<ProductionRest>> getByFieldId(@PathVariable String fieldId){
         List<Production> productionList = getProductionByFieldIdUseCase.execute(fieldId);
@@ -53,7 +50,6 @@ public class ProductionController {
         return new RestResponse<>(HttpStatus.OK, null, productionRestList);
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
     @DeleteMapping("/{productionId}")
     public RestResponse<Void> delete(@PathVariable String productionId) throws ProductionNotFoundException {
         deleteProductionUseCase.execute(productionId);

@@ -29,7 +29,6 @@ public class FarmController {
     private final GetAllFarmsUseCase getAllFarmsUseCase;
     private final RestConverter<FarmRest, Farm> restConverter;
 
-    @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping
     public RestResponse<FarmRest> save(@Valid @RequestBody FarmRest farmRest){
         Farm farm = restConverter.mapToDomain(farmRest);
@@ -37,7 +36,6 @@ public class FarmController {
         return new RestResponse<>(HttpStatus.CREATED, "Farm created with success", savedRestFarm);
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/farms")
     public RestResponse<List<FarmRest>> getAll() {
         List<Farm> farmList = getAllFarmsUseCase.execute();
@@ -45,7 +43,6 @@ public class FarmController {
         return new RestResponse<>(HttpStatus.OK, null, farmRestList);
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/{id}")
     public RestResponse<FarmRest> getById(@PathVariable String id) {
         Optional<Farm> farm = getFarmByIdUseCase.execute(id);
@@ -53,7 +50,6 @@ public class FarmController {
         return new RestResponse<>(HttpStatus.OK, null, farmRest);
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
     @DeleteMapping("/{id}")
     public RestResponse<Void> delete(@PathVariable String id) throws FieldNotFoundException, ProductionNotFoundException {
         deleteFarmByIdUseCase.execute(id);

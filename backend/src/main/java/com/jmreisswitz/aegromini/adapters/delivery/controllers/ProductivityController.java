@@ -16,7 +16,6 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -31,7 +30,6 @@ public class ProductivityController {
     private final GetFieldByIdUseCase getFieldByIdUseCase;
     private final GetFarmByIdUseCase getFarmByIdUseCase;
 
-    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/field_id/{fieldId}")
     public RestResponse<List<ProductivityRest>> getProductivityByFieldId(@PathVariable String fieldId)
             throws FieldNotFoundException {
@@ -42,7 +40,6 @@ public class ProductivityController {
         return new RestResponse<>(HttpStatus.OK, null, productivityRestList);
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/farm_id/{farmId}")
     public RestResponse<List<ProductivityRest>> getProductivityByFarmId(@PathVariable String farmId)
             throws FarmHasNoFieldsException {
