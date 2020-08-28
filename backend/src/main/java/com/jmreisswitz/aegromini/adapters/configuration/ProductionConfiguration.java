@@ -53,11 +53,6 @@ public class ProductionConfiguration {
     }
 
     @Bean
-    GetProductionByFarmIdUseCase getProductionByFarmIdUseCase() {
-        return new GetProductionByFarmIdUseCase(productionRepository());
-    }
-
-    @Bean
     DeleteProductionUseCase deleteProductionUseCase() {
         return new DeleteProductionUseCase(productionRepository(), getProductionByIdUseCase());
     }

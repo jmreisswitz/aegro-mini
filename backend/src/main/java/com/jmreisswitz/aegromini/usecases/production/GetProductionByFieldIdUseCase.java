@@ -14,7 +14,6 @@ public class GetProductionByFieldIdUseCase {
     private final EntityConverter<ProductionEntity, Production> entityConverter;
 
     public List<Production> execute(String fieldId){
-        // TODO non existing fieldId Exception
         return productionRepository.listAllByFieldId(fieldId);
     }
 }

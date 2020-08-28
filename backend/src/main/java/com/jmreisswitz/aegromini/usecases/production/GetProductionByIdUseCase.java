@@ -9,7 +9,7 @@ import java.util.Optional;
 
 @AllArgsConstructor
 public class GetProductionByIdUseCase {
-    private ProductionRepository productionRepository;
+    private final ProductionRepository productionRepository;
 
     public Production execute(String productionId) throws ProductionNotFoundException {
         Optional<Production> production = productionRepository.findOneById(productionId);
